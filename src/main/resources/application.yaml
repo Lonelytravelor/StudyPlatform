@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/platform
+
+mybatis:
+  type-aliases-package: com.pandora.model
+  mapper-locations: classpath:mapperxml/*.xml
