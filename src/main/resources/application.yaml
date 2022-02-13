@@ -2,7 +2,7 @@ spring:
   datasource:
     username: root
     password: root
-    url: jdbc:mysql://localhost:3306/platform
+    url: jdbc:mysql://localhost:3306/studyplatform
 
 mybatis:
   type-aliases-package: com.pandora.model
