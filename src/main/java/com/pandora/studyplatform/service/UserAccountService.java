@@ -45,7 +45,17 @@ public class UserAccountService{
 		 return userAccountMapper.selectAll();
 	}
 
+	public Integer countDistinctUserId(){
+		 return userAccountMapper.countDistinctUserId();
+	}
 
+    public List<UserAccount> selectUsersPage(Integer pageNum, Integer pageSize){
+        System.out.println("=====================================");
+        List<UserAccount> userAccounts = userAccountMapper.findAllLimit(pageNum, pageSize);
+        System.out.println(userAccounts);
+        System.out.println("=====================================");
+        return userAccounts;
+    }
 
 
 }

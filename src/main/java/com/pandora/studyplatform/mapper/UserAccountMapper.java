@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.pandora.studyplatform.model.UserAccount;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 
 @Mapper
 public interface UserAccountMapper {
@@ -21,5 +22,8 @@ public interface UserAccountMapper {
 
     List<UserAccount> selectAll();
 
+    Integer countDistinctUserId();
+
+    List<UserAccount> findAllLimit(int a, int b);
 
 }

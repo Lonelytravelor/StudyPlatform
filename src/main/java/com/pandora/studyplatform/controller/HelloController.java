@@ -33,7 +33,20 @@ public class HelloController {
 
     @RequestMapping("/selectAllUser")
     @ResponseBody
-    public List<UserAccount> selectAllUser(){
-        return userAccountService.selectAll();
+    public HashMap<String, Object> selectAllUser(){
+        HashMap<String,Object> map = new HashMap<>();
+        map.put("data", userAccountService.selectAll());
+        map.put("total", userAccountService.countDistinctUserId());
+        return map;
+    }
+
+    @RequestMapping("/selectPageUser")
+    @ResponseBody
+    public HashMap<String, Object> selectPageUser(Integer pageNum, Integer pageSize){
+        pageNum = (pageNum - 1) * pageSize;
+        HashMap<String,Object> map = new HashMap<>();
+        map.put("data", userAccountService.selectUsersPage(pageNum, pageSize));
+        map.put("total", userAccountService.countDistinctUserId());
+        return map;
     }
 }

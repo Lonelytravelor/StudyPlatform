@@ -1,3 +1,5 @@
+server:
+  port: 9090
 spring:
   datasource:
     username: root
@@ -7,3 +9,5 @@ spring:
 mybatis:
   type-aliases-package: com.pandora.model
   mapper-locations: classpath:mapperxml/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
