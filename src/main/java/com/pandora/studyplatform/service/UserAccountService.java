@@ -50,11 +50,7 @@ public class UserAccountService{
 	}
 
     public List<UserAccount> selectUsersPage(Integer pageNum, Integer pageSize){
-        System.out.println("=====================================");
-        List<UserAccount> userAccounts = userAccountMapper.findAllLimit(pageNum, pageSize);
-        System.out.println(userAccounts);
-        System.out.println("=====================================");
-        return userAccounts;
+        return userAccountMapper.findAllLimit(pageNum, pageSize);
     }
 
 
