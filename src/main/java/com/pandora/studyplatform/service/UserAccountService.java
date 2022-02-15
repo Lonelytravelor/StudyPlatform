@@ -12,7 +12,7 @@ public class UserAccountService{
     private UserAccountMapper userAccountMapper;
 
     
-    public int deleteByPrimaryKey(String userId) {
+    public int deleteByPrimaryKey(Integer userId) {
         return userAccountMapper.deleteByPrimaryKey(userId);
     }
 
@@ -27,7 +27,7 @@ public class UserAccountService{
     }
 
     
-    public UserAccount selectByPrimaryKey(String userId) {
+    public UserAccount selectByPrimaryKey(Integer userId) {
         return userAccountMapper.selectByPrimaryKey(userId);
     }
 
@@ -41,17 +41,18 @@ public class UserAccountService{
         return userAccountMapper.updateByPrimaryKey(record);
     }
 
-	public List<UserAccount> selectAll(){
-		 return userAccountMapper.selectAll();
+	public UserAccount loginByUserName(String userName){
+        UserAccount userAccount = userAccountMapper.selectOneByUserPhone(userName);
+        if ( userAccount == null){
+            userAccount = userAccountMapper.selectOneByUserEmail(userName);
+        }
+        return userAccount;
 	}
 
-	public Integer countDistinctUserId(){
-		 return userAccountMapper.countDistinctUserId();
-	}
 
-    public List<UserAccount> selectUsersPage(Integer pageNum, Integer pageSize){
-        return userAccountMapper.findAllLimit(pageNum, pageSize);
-    }
+
+
+
 
 
 }

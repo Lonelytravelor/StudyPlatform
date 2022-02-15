@@ -1,7 +1,7 @@
 package com.pandora.studyplatform.model;
 
 public class UserAccount {
-    private String userId;
+    private Integer userId;
 
     private String userEmail;
 
@@ -9,11 +9,11 @@ public class UserAccount {
 
     private String userPassword;
 
-    public String getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
