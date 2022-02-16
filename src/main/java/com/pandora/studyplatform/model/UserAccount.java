@@ -9,6 +9,11 @@ public class UserAccount {
 
     private String userPassword;
 
+    public UserAccount(String userPhone, String userPassword) {
+        this.userPhone = userPhone;
+        this.userPassword = userPassword;
+    }
+
     public Integer getUserId() {
         return userId;
     }

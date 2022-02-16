@@ -26,6 +26,14 @@ public class UserAccountService{
         return userAccountMapper.insertSelective(record);
     }
 
+    public Boolean register(UserAccount record) {
+//        基于insertSelective（）方法进行重写，实现注册成功返回true
+        Boolean res;
+        int i = userAccountMapper.insertSelective(record);
+        res = ( i != 0 );
+        return res;
+    }
+
     
     public UserAccount selectByPrimaryKey(Integer userId) {
         return userAccountMapper.selectByPrimaryKey(userId);

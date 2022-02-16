@@ -12,8 +12,10 @@ import javax.annotation.Resource;
 
 /**
  * @author : Pandora
- * 2022/2/15-23:03
+ * 2022/2/16-9:53
+ * @description：这个类负责提供注册，登录等接口
  */
+
 @Controller
 public class LoginController {
     @Resource
@@ -25,16 +27,22 @@ public class LoginController {
         String userName = jsonParam.getString("userName");
         String password = jsonParam.getString("password");
         Boolean res = false;
-        System.out.println("==================");
-        System.out.println(userName.length());
-        System.out.println(password);
-        System.out.println("==================");
         UserAccount userAccount = userAccountService.loginByUserName(userName);
         if ( userAccount != null){
             if ( password.equals(userAccount.getUserPassword()) ){
                 res = true;
             }
         }
+        return res;
+    }
+
+    @RequestMapping("/register")
+    @ResponseBody
+    public Boolean register(@RequestBody JSONObject jsonParam){
+        String phone = jsonParam.getString("userName");
+        String password = jsonParam.getString("password");
+        System.out.println(phone);
+        Boolean res = userAccountService.register(new UserAccount(phone, password));
         return res;
     }
 }
