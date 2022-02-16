@@ -49,6 +49,10 @@ public class UserAccountService{
         return userAccountMapper.updateByPrimaryKey(record);
     }
 
+    public UserAccount selectOneByPhone(String phone){
+        return userAccountMapper.selectOneByUserPhone(phone);
+    }
+
 	public UserAccount loginByUserName(String userName){
         UserAccount userAccount = userAccountMapper.selectOneByUserPhone(userName);
         if ( userAccount == null){

@@ -39,10 +39,13 @@ public class LoginController {
     @RequestMapping("/register")
     @ResponseBody
     public Boolean register(@RequestBody JSONObject jsonParam){
+        Boolean res = false;
         String phone = jsonParam.getString("userName");
         String password = jsonParam.getString("password");
-        System.out.println(phone);
-        Boolean res = userAccountService.register(new UserAccount(phone, password));
+        UserAccount userAccount = userAccountService.selectOneByPhone(phone);
+        if (userAccount == null){
+            res = userAccountService.register(new UserAccount(phone, password));
+        }
         return res;
     }
 }
