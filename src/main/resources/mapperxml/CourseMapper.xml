@@ -108,4 +108,12 @@
     from course
     where course_id=#{courseId,jdbcType=INTEGER}
   </select>
+
+  <select id="selectIndexCourse" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from course
+    limit 2
+  </select>
+
 </mapper>

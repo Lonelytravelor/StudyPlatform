@@ -32,7 +32,7 @@ public interface CourseMapper {
 
     Course selectOneByCourseId(@Param("courseId")Integer courseId);
 
-
+    List<Course> selectIndexCourse();
 
 
 }

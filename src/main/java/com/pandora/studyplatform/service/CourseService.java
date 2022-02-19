@@ -30,6 +30,10 @@ public class CourseService{
 		 return courseMapper.selectAll();
 	}
 
+    public List<Course> selectIndexCourse(){
+        return courseMapper.selectIndexCourse();
+    }
+
 	public Course selectOneByCourseId(Integer courseId){
 		 return courseMapper.selectOneByCourseId(courseId);
 	}

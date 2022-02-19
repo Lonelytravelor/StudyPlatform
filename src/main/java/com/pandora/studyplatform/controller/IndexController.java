@@ -23,6 +23,12 @@ public class IndexController {
     @RequestMapping("/loadCourse")
     @ResponseBody
     public List<Course> loadIndexCourse(){
+        return courseService.selectIndexCourse();
+    }
+
+    @RequestMapping("/loadAllCourse")
+    @ResponseBody
+    public List<Course> loadAllCourse(){
         return courseService.selectAll();
     }
 }
