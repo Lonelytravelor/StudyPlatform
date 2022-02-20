@@ -61,6 +61,16 @@ public class UserAccountService{
         return userAccount;
 	}
 
+	public Integer selectOneUserIdByUserPhone(String userPhone){
+		 return userAccountMapper.selectOneUserIdByUserPhone(userPhone);
+	}
+
+
+
+
+
+
+
 
 
 

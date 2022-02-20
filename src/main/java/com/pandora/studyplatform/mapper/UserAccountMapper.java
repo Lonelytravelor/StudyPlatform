@@ -1,4 +1,5 @@
 package com.pandora.studyplatform.mapper;
+import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.pandora.studyplatform.model.UserAccount;
@@ -51,6 +52,12 @@ public interface UserAccountMapper {
     UserAccount selectOneByUserPhone(@Param("userPhone")String userPhone);
 
     UserAccount selectOneByUserEmail(@Param("userEmail")String userEmail);
+
+    Integer selectOneUserIdByUserPhone(@Param("userPhone")String userPhone);
+
+
+
+
 
 
 }

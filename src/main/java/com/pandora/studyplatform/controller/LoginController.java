@@ -2,7 +2,9 @@ package com.pandora.studyplatform.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.pandora.studyplatform.model.UserAccount;
+import com.pandora.studyplatform.model.UserBasic;
 import com.pandora.studyplatform.service.UserAccountService;
+import com.pandora.studyplatform.service.UserBasicService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +22,8 @@ import javax.annotation.Resource;
 public class LoginController {
     @Resource
     UserAccountService userAccountService;
+    @Resource
+    UserBasicService userBasicService;
 
     @RequestMapping("/login")
     @ResponseBody
@@ -45,6 +49,8 @@ public class LoginController {
         UserAccount userAccount = userAccountService.selectOneByPhone(phone);
         if (userAccount == null){
             res = userAccountService.register(new UserAccount(phone, password));
+            Integer id = userAccountService.selectOneUserIdByUserPhone(phone);
+            res = userBasicService.insertSelective(new UserBasic(id));
         }
         return res;
     }
