@@ -113,7 +113,7 @@
     select
     course_id,course_name,course_teacher,course_institution
     from course
-    limit 2
+    limit 20
   </select>
 
 </mapper>
