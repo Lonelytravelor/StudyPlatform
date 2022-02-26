@@ -54,32 +54,11 @@ public class IndexController {
         int answer_2 = 0;
         int answer_3 = 0;
         int answer_4 = 0;
-        for ( int i = 0; i < answers.size(); i++){
-            if ( i % 4 == 0){
-                if (answers.get(i).equals("a")){
-                    answer_1++;
-                }else {
-                    answer_1--;
-                }
-            }else if ( i % 4 == 1){
-                if (answers.get(i).equals("a")){
-                    answer_2++;
-                }else {
-                    answer_2--;
-                }
-            }else if ( i % 4 == 2){
-                if (answers.get(i).equals("a")){
-                    answer_3++;
-                }else {
-                    answer_3--;
-                }
-            }else {
-                if (answers.get(i).equals("a")){
-                    answer_4++;
-                }else {
-                    answer_4--;
-                }
-            }
+        for ( int i = 0; i < answers.size(); i+=4){
+            int a = answers.get(i).equals("a") ? answer_1++ : answer_1--;
+            a = answers.get(i+1).equals("a") ? answer_2++ : answer_2--;
+            a = answers.get(i+2).equals("a") ? answer_3++ : answer_3--;
+            a = answers.get(i+3).equals("a") ? answer_4++ : answer_4--;
         }
         String ans = answer_1 > 0 ? answer_1 + "a" : (-answer_1)+ "b";
         ans += answer_2 > 0 ? answer_2 + "a" : (-answer_2)+ "b";
