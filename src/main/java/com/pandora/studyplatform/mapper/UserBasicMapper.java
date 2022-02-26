@@ -11,6 +11,10 @@ public interface UserBasicMapper {
 
     UserBasic selectOneByUserId(@Param("userId")Integer userId);
 
+    Integer selectOneUserStudyStelyIdByUserId(@Param("userId")Integer userId);
+
+    int updateUserStudyStelyIdByUserId(@Param("updatedUserStudyStelyId")Integer updatedUserStudyStelyId,@Param("userId")Integer userId);
+
 
 
 

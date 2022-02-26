@@ -22,6 +22,17 @@ public class UserBasicService{
 		 return userBasicMapper.selectOneByUserId(userId);
 	}
 
+	public Integer selectOneUserStudyStelyIdByUserId(Integer userId){
+		 return userBasicMapper.selectOneUserStudyStelyIdByUserId(userId);
+	}
+
+	public int updateUserStudyStelyIdByUserId(Integer updatedUserStudyStelyId,Integer userId){
+		 return userBasicMapper.updateUserStudyStelyIdByUserId(updatedUserStudyStelyId,userId);
+	}
+
+
+
+
 
 
 
