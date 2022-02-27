@@ -7,6 +7,10 @@ public class Course {
 
     private String courseName;
 
+    private Integer courseSummaryId;
+
+    private String courseImageUrl;
+
     private String courseTeacher;
 
     private String courseLabel;
@@ -18,6 +22,8 @@ public class Course {
     private String courseReferenceId;
 
     private LocalDateTime courseReleaseTime;
+
+    private Integer courseSelected;
 
     public Integer getCourseId() {
         return courseId;
@@ -33,6 +39,22 @@ public class Course {
 
     public void setCourseName(String courseName) {
         this.courseName = courseName;
+    }
+
+    public Integer getCourseSummaryId() {
+        return courseSummaryId;
+    }
+
+    public void setCourseSummaryId(Integer courseSummaryId) {
+        this.courseSummaryId = courseSummaryId;
+    }
+
+    public String getCourseImageUrl() {
+        return courseImageUrl;
+    }
+
+    public void setCourseImageUrl(String courseImageUrl) {
+        this.courseImageUrl = courseImageUrl;
     }
 
     public String getCourseTeacher() {
@@ -83,6 +105,14 @@ public class Course {
         this.courseReleaseTime = courseReleaseTime;
     }
 
+    public Integer getCourseSelected() {
+        return courseSelected;
+    }
+
+    public void setCourseSelected(Integer courseSelected) {
+        this.courseSelected = courseSelected;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -91,12 +121,15 @@ public class Course {
         sb.append("Hash = ").append(hashCode());
         sb.append(", courseId=").append(courseId);
         sb.append(", courseName=").append(courseName);
+        sb.append(", courseSummaryId=").append(courseSummaryId);
+        sb.append(", courseImageUrl=").append(courseImageUrl);
         sb.append(", courseTeacher=").append(courseTeacher);
         sb.append(", courseLabel=").append(courseLabel);
         sb.append(", courseInstitution=").append(courseInstitution);
         sb.append(", courseAnnouncementId=").append(courseAnnouncementId);
         sb.append(", courseReferenceId=").append(courseReferenceId);
         sb.append(", courseReleaseTime=").append(courseReleaseTime);
+        sb.append(", courseSelected=").append(courseSelected);
         sb.append("]");
         return sb.toString();
     }
