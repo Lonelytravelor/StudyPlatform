@@ -3,8 +3,8 @@ package com.pandora.studyplatform.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.pandora.studyplatform.model.Course;
 import com.pandora.studyplatform.model.NatureTest;
-import com.pandora.studyplatform.service.CourseService;
-import com.pandora.studyplatform.service.NatureTestService;
+import com.pandora.studyplatform.model.StudyStyle;
+import com.pandora.studyplatform.service.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +27,12 @@ public class IndexController {
     CourseService courseService;
     @Resource
     NatureTestService natureTestService;
+    @Resource
+    StudyStyleService studyStyleService;
+    @Resource
+    UserAccountService userAccountService;
+    @Resource
+    UserBasicService basicService;
 
     @RequestMapping("/loadCourse")
     @ResponseBody
@@ -48,8 +54,9 @@ public class IndexController {
 
     @RequestMapping("/updateNatureTest")
     @ResponseBody
-    public Boolean loadNatureTest(@RequestBody JSONObject jsonParam){
+    public StudyStyle loadNatureTest(@RequestBody JSONObject jsonParam){
         ArrayList<String> answers = (ArrayList) jsonParam.get("answers");
+        String userName = jsonParam.getString("userName");
         int answer_1 = 0;
         int answer_2 = 0;
         int answer_3 = 0;
@@ -60,12 +67,18 @@ public class IndexController {
             a = answers.get(i+2).equals("a") ? answer_3++ : answer_3--;
             a = answers.get(i+3).equals("a") ? answer_4++ : answer_4--;
         }
-        String ans = answer_1 > 0 ? answer_1 + "a" : (-answer_1)+ "b";
-        ans += answer_2 > 0 ? answer_2 + "a" : (-answer_2)+ "b";
-        ans += answer_3 > 0 ? answer_3 + "a" : (-answer_3)+ "b";
-        ans += answer_4 > 0 ? answer_4 + "a" : (-answer_4)+ "b";
-        System.out.println(ans);
-        return true;
+        String ans = answer_1 > 0 ?  "a" :  "b";
+        ans += answer_2 > 0 ?  "a" : "b";
+        ans += answer_3 > 0 ?  "a" : "b";
+        ans += answer_4 > 0 ?  "a" : "b";
+        Integer id = userAccountService.selectOneUserIdByUserPhone(userName);
+        StudyStyle studyStyle = selectStudyStyleByShape(ans);
+        basicService.updateUserStudyStelyIdByUserId(studyStyle.getStyleId(), id);
+        return studyStyle;
+    }
+
+    public StudyStyle selectStudyStyleByShape(String shape){
+        return studyStyleService.selectOneByStyleShape(shape);
     }
 
 

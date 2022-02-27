@@ -15,7 +15,4 @@ public interface UserBasicMapper {
 
     int updateUserStudyStelyIdByUserId(@Param("updatedUserStudyStelyId")Integer updatedUserStudyStelyId,@Param("userId")Integer userId);
 
-
-
-
 }
