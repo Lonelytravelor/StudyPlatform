@@ -32,6 +32,11 @@ public class BasicController {
     @RequestMapping("/loadUserBasic")
     @ResponseBody
     public UserBasic loadUserBasic(Integer userId){
+        System.out.println("===================================");
+        System.out.println();
+        System.out.println(userBasicService.selectOneByUserId(userId));
+        System.out.println();
+        System.out.println("===================================");
         return userBasicService.selectOneByUserId(userId);
     }
 }

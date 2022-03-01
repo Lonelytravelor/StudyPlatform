@@ -31,18 +31,19 @@ public class LoginController {
         String userName = jsonParam.getString("userName");
         String password = jsonParam.getString("password");
         String res = "false";
+        Integer id = -1;
         UserAccount userAccount = userAccountService.loginByUserName(userName);
         if ( userAccount != null){
             if ( password.equals(userAccount.getUserPassword()) ) {
                 res = "true";
-                Integer id = userAccountService.selectOneUserIdByUserPhone(userName);
+                id = userAccountService.selectOneUserIdByUserPhone(userName);
                 Integer integer = userBasicService.selectOneUserStudyStelyIdByUserId(id);
                 if ( integer == null ){
                     res = "unTest";
                 }
             }
         }
-        return res;
+        return (id + "," + res);
     }
 
     @RequestMapping("/register")

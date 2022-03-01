@@ -19,7 +19,7 @@ public class UserBasicService{
 	}
 
 	public UserBasic selectOneByUserId(Integer userId){
-		 return userBasicMapper.selectOneByUserId(userId);
+		 return userBasicMapper.selectOneStudyStelyByUserId(userId);
 	}
 
 	public Integer selectOneUserStudyStelyIdByUserId(Integer userId){

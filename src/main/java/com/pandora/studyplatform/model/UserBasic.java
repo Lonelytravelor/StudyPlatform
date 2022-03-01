@@ -23,6 +23,18 @@ public class UserBasic {
 
     private Integer userStudyStelyId;
 
+    private transient StudyStyle studyStyle;
+
+
+
+    public StudyStyle getStudyStyle() {
+        return studyStyle;
+    }
+
+    public void setStudyStyle(StudyStyle studyStyle) {
+        this.studyStyle = studyStyle;
+    }
+
     public UserBasic(Integer userId) {
         this.userId = userId;
     }
@@ -109,21 +121,18 @@ public class UserBasic {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", userId=").append(userId);
-        sb.append(", userAge=").append(userAge);
-        sb.append(", userGender=").append(userGender);
-        sb.append(", userCollege=").append(userCollege);
-        sb.append(", userDiscipline=").append(userDiscipline);
-        sb.append(", userClass=").append(userClass);
-        sb.append(", userSchoolYear=").append(userSchoolYear);
-        sb.append(", userLastLoginTime=").append(userLastLoginTime);
-        sb.append(", userRegistrationTime=").append(userRegistrationTime);
-        sb.append(", userStudyStelyId=").append(userStudyStelyId);
-        sb.append("]");
-        return sb.toString();
+        return "UserBasic{" +
+                "userId=" + userId +
+                ", userAge='" + userAge + '\'' +
+                ", userGender='" + userGender + '\'' +
+                ", userCollege='" + userCollege + '\'' +
+                ", userDiscipline='" + userDiscipline + '\'' +
+                ", userClass='" + userClass + '\'' +
+                ", userSchoolYear='" + userSchoolYear + '\'' +
+                ", userLastLoginTime=" + userLastLoginTime +
+                ", userRegistrationTime=" + userRegistrationTime +
+                ", userStudyStelyId=" + userStudyStelyId +
+                ", studyStyle=" + studyStyle +
+                '}';
     }
 }
