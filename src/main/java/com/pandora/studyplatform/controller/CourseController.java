@@ -1,8 +1,10 @@
 package com.pandora.studyplatform.controller;
 
 import com.pandora.studyplatform.model.Course;
+import com.pandora.studyplatform.model.CourseAnnouncement;
 import com.pandora.studyplatform.model.CourseReference;
 import com.pandora.studyplatform.model.CourseSummary;
+import com.pandora.studyplatform.service.CourseAnnouncementService;
 import com.pandora.studyplatform.service.CourseReferenceService;
 import com.pandora.studyplatform.service.CourseService;
 import com.pandora.studyplatform.service.CourseSummaryService;
@@ -25,8 +27,8 @@ public class CourseController {
     private CourseService courseService;
     @Resource
     private CourseSummaryService courseSummaryService;
-//    @Resource
-//    private CourseAnnouncementService courseAnnouncementService;
+    @Resource
+    private CourseAnnouncementService courseAnnouncementService;
     @Resource
     private CourseReferenceService courseReferenceService;
 
@@ -47,13 +49,13 @@ public class CourseController {
         }
         course.setCourseReferenceList(courseReferenceList);
 //        获取Summary并注入
-//        List<CourseAnnouncement> courseAnnouncementList = new LinkedList<>();
-//        strings = course.getCourseAnnouncementId().split(",");
-//        for ( String s : strings ){
-//            CourseAnnouncement courseAnnouncement = courseAnnouncementService.selectByPrimaryKey(Integer.valueOf(s));
-//            courseAnnouncementList.add(courseAnnouncement);
-//        }
-//        course.setCourseAnnouncementList(courseAnnouncementList);
+        List<CourseAnnouncement> courseAnnouncementList = new LinkedList<>();
+        strings = course.getCourseAnnouncementId().split(",");
+        for ( String s : strings ){
+            CourseAnnouncement courseAnnouncement = courseAnnouncementService.selectByPrimaryKey(Integer.valueOf(s));
+            courseAnnouncementList.add(courseAnnouncement);
+        }
+        course.setCourseAnnouncementList(courseAnnouncementList);
         return course;
     }
 }

@@ -22,7 +22,7 @@ public class Course {
 
     private String courseAnnouncementId;
 
-//    private transient List<CourseAnnouncement> courseAnnouncementList;
+    private transient List<CourseAnnouncement> courseAnnouncementList;
 
     private String courseReferenceId;
 
@@ -43,13 +43,13 @@ public class Course {
         this.courseSummary = courseSummary;
     }
 
-//    public List<CourseAnnouncement> getCourseAnnouncementList() {
-//        return courseAnnouncementList;
-//    }
-//
-//    public void setCourseAnnouncementList(List<CourseAnnouncement> courseAnnouncementList) {
-//        this.courseAnnouncementList = courseAnnouncementList;
-//    }
+    public List<CourseAnnouncement> getCourseAnnouncementList() {
+        return courseAnnouncementList;
+    }
+
+    public void setCourseAnnouncementList(List<CourseAnnouncement> courseAnnouncementList) {
+        this.courseAnnouncementList = courseAnnouncementList;
+    }
 
     public List<CourseReference> getCourseReferenceList() {
         return courseReferenceList;
