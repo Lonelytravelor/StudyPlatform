@@ -1,6 +1,7 @@
 package com.pandora.studyplatform.model;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class Course {
     private Integer courseId;
@@ -8,6 +9,8 @@ public class Course {
     private String courseName;
 
     private Integer courseSummaryId;
+
+    private transient CourseSummary courseSummary;
 
     private String courseImageUrl;
 
@@ -19,11 +22,42 @@ public class Course {
 
     private String courseAnnouncementId;
 
+//    private transient List<CourseAnnouncement> courseAnnouncementList;
+
     private String courseReferenceId;
+
+    private transient List<CourseReference> courseReferenceList;
 
     private LocalDateTime courseReleaseTime;
 
     private Integer courseSelected;
+
+    public Course() {
+    }
+
+    public CourseSummary getCourseSummary() {
+        return courseSummary;
+    }
+
+    public void setCourseSummary(CourseSummary courseSummary) {
+        this.courseSummary = courseSummary;
+    }
+
+//    public List<CourseAnnouncement> getCourseAnnouncementList() {
+//        return courseAnnouncementList;
+//    }
+//
+//    public void setCourseAnnouncementList(List<CourseAnnouncement> courseAnnouncementList) {
+//        this.courseAnnouncementList = courseAnnouncementList;
+//    }
+
+    public List<CourseReference> getCourseReferenceList() {
+        return courseReferenceList;
+    }
+
+    public void setCourseReferenceList(List<CourseReference> courseReferenceList) {
+        this.courseReferenceList = courseReferenceList;
+    }
 
     public Integer getCourseId() {
         return courseId;

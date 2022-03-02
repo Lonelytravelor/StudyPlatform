@@ -43,4 +43,10 @@ public class BasicController {
         userBasicService.updateByUserId(userBasic, userBasic.getUserId());
         return "success";
     }
+
+    @RequestMapping("/image")
+    @ResponseBody
+    public String image(){
+        return "http://localhost:9090/image.png";
+    }
 }

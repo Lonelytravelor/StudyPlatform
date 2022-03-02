@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pandora.studyplatform.mapper.CourseSummaryMapper">
+  <resultMap id="BaseResultMap" type="com.pandora.studyplatform.model.CourseSummary">
+    <!--@mbg.generated-->
+    <!--@Table course_summary-->
+    <id column="summary_id" jdbcType="INTEGER" property="summaryId" />
+    <result column="summary_content" jdbcType="VARCHAR" property="summaryContent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    summary_id, summary_content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from course_summary
+    where summary_id = #{summaryId,jdbcType=INTEGER}
+  </select>
+  <insert id="insertSelective" keyColumn="summary_id" keyProperty="summaryId" parameterType="com.pandora.studyplatform.model.CourseSummary" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into course_summary
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="summaryContent != null">
+        summary_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="summaryContent != null">
+        #{summaryContent,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.pandora.studyplatform.model.CourseSummary">
+    <!--@mbg.generated-->
+    update course_summary
+    set summary_content = #{summaryContent,jdbcType=VARCHAR}
+    where summary_id = #{summaryId,jdbcType=INTEGER}
+  </update>
+</mapper>

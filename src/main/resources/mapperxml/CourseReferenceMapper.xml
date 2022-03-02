@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pandora.studyplatform.mapper.CourseReferenceMapper">
+  <resultMap id="BaseResultMap" type="com.pandora.studyplatform.model.CourseReference">
+    <!--@mbg.generated-->
+    <!--@Table course_reference-->
+    <id column="reference_id" jdbcType="INTEGER" property="referenceId" />
+    <result column="reference_name" jdbcType="VARCHAR" property="referenceName" />
+    <result column="reference_author" jdbcType="VARCHAR" property="referenceAuthor" />
+    <result column="reference_press" jdbcType="VARCHAR" property="referencePress" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    reference_id, reference_name, reference_author, reference_press
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from course_reference
+    where reference_id = #{referenceId,jdbcType=INTEGER}
+  </select>
+  <insert id="insertSelective" parameterType="com.pandora.studyplatform.model.CourseReference">
+    <!--@mbg.generated-->
+    insert into course_reference
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="referenceId != null">
+        reference_id,
+      </if>
+      <if test="referenceName != null">
+        reference_name,
+      </if>
+      <if test="referenceAuthor != null">
+        reference_author,
+      </if>
+      <if test="referencePress != null">
+        reference_press,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="referenceId != null">
+        #{referenceId,jdbcType=INTEGER},
+      </if>
+      <if test="referenceName != null">
+        #{referenceName,jdbcType=VARCHAR},
+      </if>
+      <if test="referenceAuthor != null">
+        #{referenceAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="referencePress != null">
+        #{referencePress,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.pandora.studyplatform.model.CourseReference">
+    <!--@mbg.generated-->
+    update course_reference
+    set reference_name = #{referenceName,jdbcType=VARCHAR},
+      reference_author = #{referenceAuthor,jdbcType=VARCHAR},
+      reference_press = #{referencePress,jdbcType=VARCHAR}
+    where reference_id = #{referenceId,jdbcType=INTEGER}
+  </update>
+</mapper>
