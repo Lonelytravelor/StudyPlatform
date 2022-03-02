@@ -1,4 +1,5 @@
 package com.pandora.studyplatform.mapper;
+import org.apache.ibatis.annotations.Param;
 import com.pandora.studyplatform.model.StudyStyle;
 import org.apache.ibatis.annotations.*;
 import com.pandora.studyplatform.model.UserBasic;
@@ -34,5 +35,8 @@ public interface UserBasicMapper {
             )
     })
     UserBasic selectOneStudyStelyByUserId(Integer id);
+
+    int updateByUserId(@Param("updated")UserBasic updated,@Param("userId")Integer userId);
+
 
 }

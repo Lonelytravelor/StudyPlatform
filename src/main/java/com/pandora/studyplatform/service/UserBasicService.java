@@ -30,6 +30,13 @@ public class UserBasicService{
 		 return userBasicMapper.updateUserStudyStelyIdByUserId(updatedUserStudyStelyId,userId);
 	}
 
+	public int updateByUserId(UserBasic updated,Integer userId){
+		 return userBasicMapper.updateByUserId(updated,userId);
+	}
+
+
+
+
 
 
 

@@ -25,7 +25,8 @@ public class UserBasic {
 
     private transient StudyStyle studyStyle;
 
-
+    public UserBasic() {
+    }
 
     public StudyStyle getStudyStyle() {
         return studyStyle;
