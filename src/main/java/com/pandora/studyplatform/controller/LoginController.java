@@ -3,8 +3,10 @@ package com.pandora.studyplatform.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.pandora.studyplatform.model.UserAccount;
 import com.pandora.studyplatform.model.UserBasic;
+import com.pandora.studyplatform.model.UserCourse;
 import com.pandora.studyplatform.service.UserAccountService;
 import com.pandora.studyplatform.service.UserBasicService;
+import com.pandora.studyplatform.service.UserCourseService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +26,8 @@ public class LoginController {
     UserAccountService userAccountService;
     @Resource
     UserBasicService userBasicService;
+    @Resource
+    UserCourseService userCourseService;
 
     @RequestMapping("/login")
     @ResponseBody
@@ -57,6 +61,7 @@ public class LoginController {
             res = userAccountService.register(new UserAccount(phone, password));
             Integer id = userAccountService.selectOneUserIdByUserPhone(phone);
             res = userBasicService.insertSelective(new UserBasic(id));
+            res = userCourseService.insertSelective(new UserCourse(id));
         }
         return res;
     }

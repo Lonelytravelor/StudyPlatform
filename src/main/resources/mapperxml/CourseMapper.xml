@@ -130,7 +130,7 @@
 
   <select id="selectIndexCourse" resultMap="BaseResultMap">
     select
-    course_id,course_name,course_teacher,course_institution
+    course_id,course_name,course_teacher,course_institution,course_image_url
     from course
     limit 20
   </select>

@@ -1,14 +1,10 @@
 package com.pandora.studyplatform.controller;
 
-import com.pandora.studyplatform.model.Course;
-import com.pandora.studyplatform.model.CourseAnnouncement;
-import com.pandora.studyplatform.model.CourseReference;
-import com.pandora.studyplatform.model.CourseSummary;
-import com.pandora.studyplatform.service.CourseAnnouncementService;
-import com.pandora.studyplatform.service.CourseReferenceService;
-import com.pandora.studyplatform.service.CourseService;
-import com.pandora.studyplatform.service.CourseSummaryService;
+import com.alibaba.fastjson.JSONObject;
+import com.pandora.studyplatform.model.*;
+import com.pandora.studyplatform.service.*;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -31,6 +27,8 @@ public class CourseController {
     private CourseAnnouncementService courseAnnouncementService;
     @Resource
     private CourseReferenceService courseReferenceService;
+    @Resource
+    private UserCourseService userCourseService;
 
     @RequestMapping("/loadCourseById")
     @ResponseBody
@@ -57,5 +55,23 @@ public class CourseController {
         }
         course.setCourseAnnouncementList(courseAnnouncementList);
         return course;
+    }
+
+    @RequestMapping("/loadPersonCourses")
+    @ResponseBody
+    public List<Course> loadPersonCourses(@RequestBody JSONObject jsonParam){
+        Integer id = jsonParam.getInteger("id");
+        UserCourse userCourse = userCourseService.selectByPrimaryKey(id);
+        String coursesId = userCourse.getCoursesId();
+        if ( coursesId != null ){
+            String[] strings = coursesId.split(",");
+            List<Course> courses = new LinkedList<>();
+            for( String s : strings){
+                Course course = courseService.selectOneByCourseId(Integer.valueOf(s));
+                courses.add(course);
+            }
+            return courses;
+        }
+        return null;
     }
 }
