@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 /**
  * @author : Pandora
@@ -42,6 +45,7 @@ public class LoginController {
                 res = "true";
                 id = userAccountService.selectOneUserIdByUserPhone(userName);
                 Integer integer = userBasicService.selectOneUserStudyStelyIdByUserId(id);
+                userBasicService.updateUserLastLoginTimeByUserId(LocalDateTime.now(), id);
                 if ( integer == null ){
                     res = "unTest";
                 }

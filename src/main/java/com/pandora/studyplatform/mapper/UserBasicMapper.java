@@ -1,4 +1,5 @@
 package com.pandora.studyplatform.mapper;
+import java.time.LocalDateTime;
 import org.apache.ibatis.annotations.Param;
 import com.pandora.studyplatform.model.StudyStyle;
 import org.apache.ibatis.annotations.*;
@@ -37,6 +38,10 @@ public interface UserBasicMapper {
     UserBasic selectOneStudyStelyByUserId(Integer id);
 
     int updateByUserId(@Param("updated")UserBasic updated,@Param("userId")Integer userId);
+
+    int updateUserLastLoginTimeByUserId(@Param("updatedUserLastLoginTime")LocalDateTime updatedUserLastLoginTime,@Param("userId")Integer userId);
+
+
 
 
 }

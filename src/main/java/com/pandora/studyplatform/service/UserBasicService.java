@@ -1,4 +1,5 @@
 package com.pandora.studyplatform.service;
+import java.time.LocalDateTime;
 import java.util.List;
 import com.pandora.studyplatform.model.UserBasic;
 
@@ -33,6 +34,13 @@ public class UserBasicService{
 	public int updateByUserId(UserBasic updated,Integer userId){
 		 return userBasicMapper.updateByUserId(updated,userId);
 	}
+
+	public int updateUserLastLoginTimeByUserId(LocalDateTime updatedUserLastLoginTime,Integer userId){
+		 return userBasicMapper.updateUserLastLoginTimeByUserId(updatedUserLastLoginTime,userId);
+	}
+
+
+
 
 
 
