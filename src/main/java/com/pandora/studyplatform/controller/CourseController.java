@@ -70,7 +70,7 @@ public class CourseController {
         Integer id = jsonParam.getInteger("id");
         UserCourse userCourse = userCourseService.selectByPrimaryKey(id);
         String coursesId = userCourse.getCoursesId();
-        if ( coursesId != null ){
+        if ( !Objects.equals(coursesId,"") ){
             String[] strings = coursesId.split(",");
             List<Course> courses = new LinkedList<>();
             for( String s : strings){
@@ -108,7 +108,7 @@ public class CourseController {
         if (coursesId.contains(courseId)){
             return "fail";
         }
-        coursesId = (coursesId + "," + courseId);
+        coursesId += Objects.equals(coursesId,"") ? courseId : ("," + courseId);
         userCourseService.updateCoursesIdByUserid(coursesId, userId);
         return "success";
     }
