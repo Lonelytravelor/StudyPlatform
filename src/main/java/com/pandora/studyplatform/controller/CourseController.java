@@ -89,4 +89,10 @@ public class CourseController {
         }
         return courseSummaryMap;
     }
+
+    @RequestMapping("/loadAllCourseByLabel")
+    @ResponseBody
+    public List<Course> loadAllCourseByLabel(String label){
+        return courseService.selectAllByCourseLabel(label);
+    }
 }
