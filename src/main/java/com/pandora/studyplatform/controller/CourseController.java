@@ -105,11 +105,14 @@ public class CourseController {
         Integer userId = jsonParam.getInteger("userId");
         String courseId = jsonParam.getString("courseId");
         String coursesId = userCourseService.selectOneCoursesIdByUserid(userId);
-        if (coursesId.contains(courseId)){
+        if (coursesId == null){
+            userCourseService.updateCoursesIdByUserid(courseId, userId);
+        } else if ( !coursesId.contains(courseId) ){
+            coursesId += Objects.equals(coursesId,"") ? courseId : ("," + courseId);
+            userCourseService.updateCoursesIdByUserid(coursesId, userId);
+        } else {
             return "fail";
         }
-        coursesId += Objects.equals(coursesId,"") ? courseId : ("," + courseId);
-        userCourseService.updateCoursesIdByUserid(coursesId, userId);
         return "success";
     }
 
