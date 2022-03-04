@@ -39,6 +39,14 @@ public class CourseService {
         return courseMapper.selectOneByCourseId(courseId);
     }
 
+	public List<Course> selectAllByCourseLabel(String courseLabel){
+		 return courseMapper.selectAllByCourseLabel(courseLabel);
+	}
+
+    public List<Course> selectAllByCourseLabelLimit(String courseLabel){
+        return courseMapper.selectAllByCourseLabelLimit(courseLabel);
+    }
+
 
 }
 

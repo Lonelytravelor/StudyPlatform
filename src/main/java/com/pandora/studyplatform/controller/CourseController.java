@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author : Pandora
@@ -29,6 +31,8 @@ public class CourseController {
     private CourseReferenceService courseReferenceService;
     @Resource
     private UserCourseService userCourseService;
+    @Resource
+    private CourseLabelService courseLabelService;
 
     @RequestMapping("/loadCourseById")
     @ResponseBody
@@ -73,5 +77,16 @@ public class CourseController {
             return courses;
         }
         return null;
+    }
+
+    @RequestMapping("/loadCourseSummary")
+    @ResponseBody
+    public Map<String, List<Course>> loadCourseSummary(){
+        List<CourseLabel> courseLabels = courseLabelService.selectAll();
+        Map<String, List<Course>> courseSummaryMap = new HashMap<>();
+        for ( CourseLabel c : courseLabels){
+            courseSummaryMap.put(c.getLabel(), courseService.selectAllByCourseLabelLimit(c.getLabel()));
+        }
+        return courseSummaryMap;
     }
 }

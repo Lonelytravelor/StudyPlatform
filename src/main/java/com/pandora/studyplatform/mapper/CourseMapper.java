@@ -34,4 +34,9 @@ public interface CourseMapper {
     Course selectOneByCourseId(@Param("courseId") Integer courseId);
 
     List<Course> selectIndexCourse();
+
+    List<Course> selectAllByCourseLabel(@Param("courseLabel")String courseLabel);
+
+    List<Course> selectAllByCourseLabelLimit(@Param("courseLabel")String courseLabel);
+
 }
