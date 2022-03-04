@@ -112,4 +112,16 @@ public class CourseController {
         userCourseService.updateCoursesIdByUserid(coursesId, userId);
         return "success";
     }
+
+    @RequestMapping("/isSelectCourse")
+    @ResponseBody
+    public Boolean isSelectCourse(@RequestBody JSONObject jsonParam){
+        Integer userId = jsonParam.getInteger("userId");
+        String courseId = jsonParam.getString("courseId");
+        String coursesId = userCourseService.selectOneCoursesIdByUserid(userId);
+        if (coursesId.contains(courseId)){
+            return true;
+        }
+        return false;
+    }
 }
