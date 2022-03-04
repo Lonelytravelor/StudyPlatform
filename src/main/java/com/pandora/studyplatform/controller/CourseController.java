@@ -9,10 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author : Pandora
@@ -39,25 +36,31 @@ public class CourseController {
     public Course loadCourseById(Integer id){
         Course course = courseService.selectOneByCourseId(id);
 //        获取Summary并注入
-        Integer courseSummaryId = course.getCourseSummaryId();
-        CourseSummary courseSummary = courseSummaryService.selectByPrimaryKey(courseSummaryId);
-        course.setCourseSummary(courseSummary);
+        if (course.getCourseSummaryId() != null ){
+            Integer courseSummaryId = course.getCourseSummaryId();
+            CourseSummary courseSummary = courseSummaryService.selectByPrimaryKey(courseSummaryId);
+            course.setCourseSummary(courseSummary);
+        }
 //        获取courseReferenceList并注入
-        List<CourseReference> courseReferenceList = new LinkedList<>();
-        String[] strings = course.getCourseReferenceId().split(",");
-        for ( String s : strings ){
-            CourseReference courseReference = courseReferenceService.selectByPrimaryKey(Integer.valueOf(s));
-            courseReferenceList.add(courseReference);
+        if (course.getCourseReferenceId() != null && !Objects.equals(course.getCourseReferenceId(), "")){
+            List<CourseReference> courseReferenceList = new LinkedList<>();
+            String[] strings = course.getCourseReferenceId().split(",");
+            for ( String s : strings ){
+                CourseReference courseReference = courseReferenceService.selectByPrimaryKey(Integer.valueOf(s));
+                courseReferenceList.add(courseReference);
+            }
+            course.setCourseReferenceList(courseReferenceList);
         }
-        course.setCourseReferenceList(courseReferenceList);
 //        获取Summary并注入
-        List<CourseAnnouncement> courseAnnouncementList = new LinkedList<>();
-        strings = course.getCourseAnnouncementId().split(",");
-        for ( String s : strings ){
-            CourseAnnouncement courseAnnouncement = courseAnnouncementService.selectByPrimaryKey(Integer.valueOf(s));
-            courseAnnouncementList.add(courseAnnouncement);
+        if (course.getCourseAnnouncementId() != null && !Objects.equals(course.getCourseAnnouncementId(), "")){
+            List<CourseAnnouncement> courseAnnouncementList = new LinkedList<>();
+            String[] strings = course.getCourseAnnouncementId().split(",");
+            for ( String s : strings ){
+                CourseAnnouncement courseAnnouncement = courseAnnouncementService.selectByPrimaryKey(Integer.valueOf(s));
+                courseAnnouncementList.add(courseAnnouncement);
+            }
+            course.setCourseAnnouncementList(courseAnnouncementList);
         }
-        course.setCourseAnnouncementList(courseAnnouncementList);
         return course;
     }
 
@@ -94,5 +97,19 @@ public class CourseController {
     @ResponseBody
     public List<Course> loadAllCourseByLabel(String label){
         return courseService.selectAllByCourseLabel(label);
+    }
+
+    @RequestMapping("/updateUserCourseByUserId")
+    @ResponseBody
+    public String updateUserCourseByUserId(@RequestBody JSONObject jsonParam){
+        Integer userId = jsonParam.getInteger("userId");
+        String courseId = jsonParam.getString("courseId");
+        String coursesId = userCourseService.selectOneCoursesIdByUserid(userId);
+        if (coursesId.contains(courseId)){
+            return "fail";
+        }
+        coursesId = (coursesId + "," + courseId);
+        userCourseService.updateCoursesIdByUserid(coursesId, userId);
+        return "success";
     }
 }

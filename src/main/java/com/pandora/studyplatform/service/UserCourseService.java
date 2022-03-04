@@ -1,4 +1,5 @@
 package com.pandora.studyplatform.service;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
@@ -28,5 +29,22 @@ public class UserCourseService{
     public int updateByPrimaryKey(UserCourse record) {
         return userCourseMapper.updateByPrimaryKey(record);
     }
+
+	public int updateCoursesIdByUserid(String updatedCoursesId,Integer userid){
+		 return userCourseMapper.updateCoursesIdByUserid(updatedCoursesId,userid);
+	}
+
+	public String selectOneCoursesIdByUserid(Integer userid){
+		 return userCourseMapper.selectOneCoursesIdByUserid(userid);
+	}
+
+
+
+
+
+
+
+
+
 
 }

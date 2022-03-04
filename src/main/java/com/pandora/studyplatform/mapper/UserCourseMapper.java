@@ -1,4 +1,6 @@
 package com.pandora.studyplatform.mapper;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 import com.pandora.studyplatform.model.UserCourse;
 import org.apache.ibatis.annotations.Mapper;
@@ -25,4 +27,12 @@ public interface UserCourseMapper {
      * @return update count
      */
     int updateByPrimaryKey(UserCourse record);
+
+    String selectOneCoursesIdByUserid(@Param("userid")Integer userid);
+
+
+
+    int updateCoursesIdByUserid(@Param("updatedCoursesId")String updatedCoursesId,@Param("userid")Integer userid);
+
+
 }
