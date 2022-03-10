@@ -99,6 +99,12 @@ public class CourseController {
         return courseService.selectAllByCourseLabel(label);
     }
 
+    @RequestMapping("/loadAllCourseByCourseName")
+    @ResponseBody
+    public List<Course> loadAllCourseByCourseName(String courseName){
+        return courseService.selectByCourseNameLike(courseName);
+    }
+
     @RequestMapping("/updateUserCourseByUserId")
     @ResponseBody
     public String updateUserCourseByUserId(@RequestBody JSONObject jsonParam){
@@ -127,4 +133,41 @@ public class CourseController {
         }
         return false;
     }
+
+    @RequestMapping("/selectCourseReferenceById")
+    @ResponseBody
+    public List<CourseReference> selectCourseReferenceById(Integer id){
+        Course course = courseService.selectOneByCourseId(id);
+        List<CourseReference> courseReferenceList = new LinkedList<>();
+        String[] strings = course.getCourseReferenceId().split(",");
+        for ( String s : strings ){
+            CourseReference courseReference = courseReferenceService.selectByPrimaryKey(Integer.valueOf(s));
+            courseReferenceList.add(courseReference);
+        }
+        return courseReferenceList;
+    }
+
+    @RequestMapping("/selectCourseAnnouncementById")
+    @ResponseBody
+    public List<CourseAnnouncement> selectCourseAnnouncementById(Integer id){
+        Course course = courseService.selectOneByCourseId(id);
+        List<CourseAnnouncement> courseAnnouncementList = new LinkedList<>();
+        String[] strings = course.getCourseAnnouncementId().split(",");
+        for ( String s : strings ){
+            CourseAnnouncement courseAnnouncement = courseAnnouncementService.selectByPrimaryKey(Integer.valueOf(s));
+            courseAnnouncementList.add(courseAnnouncement);
+        }
+        return courseAnnouncementList;
+    }
+
+    @RequestMapping("/selectCourseSummaryById")
+    @ResponseBody
+    public CourseSummary selectCourseSummaryById(Integer id){
+        Course course = courseService.selectOneByCourseId(id);
+        Integer courseSummaryId = course.getCourseSummaryId();
+        CourseSummary courseSummary = courseSummaryService.selectByPrimaryKey(courseSummaryId);
+        return courseSummary;
+    }
+
+
 }

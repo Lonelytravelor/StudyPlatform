@@ -47,6 +47,13 @@ public class CourseService {
         return courseMapper.selectAllByCourseLabelLimit(courseLabel);
     }
 
+	public List<Course> selectByCourseNameLike(String likeCourseName){
+		 return courseMapper.selectByCourseNameLike(likeCourseName);
+	}
+
+
+
+
 
 }
 
