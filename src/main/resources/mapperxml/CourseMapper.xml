@@ -9,6 +9,7 @@
     <result column="course_summary_id" jdbcType="INTEGER" property="courseSummaryId" />
     <result column="course_image_url" jdbcType="VARCHAR" property="courseImageUrl" />
     <result column="course_teacher" jdbcType="VARCHAR" property="courseTeacher" />
+    <result column="course_university" jdbcType="VARCHAR" property="courseUniversity" />
     <result column="course_label" jdbcType="VARCHAR" property="courseLabel" />
     <result column="course_homeworks" jdbcType="VARCHAR" property="courseHomeworks" />
     <result column="course_institution" jdbcType="VARCHAR" property="courseInstitution" />
@@ -19,8 +20,8 @@
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    course_id, course_name, course_summary_id, course_image_url, course_teacher, course_label, 
-    course_homeworks, course_institution, course_announcement_id, course_reference_id, 
+    course_id, course_name, course_summary_id, course_image_url, course_teacher, course_university, 
+    course_label, course_homeworks, course_institution, course_announcement_id, course_reference_id, 
     course_release_time, course_selected
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -45,6 +46,9 @@
       </if>
       <if test="courseTeacher != null">
         course_teacher,
+      </if>
+      <if test="courseUniversity != null">
+        course_university,
       </if>
       <if test="courseLabel != null">
         course_label,
@@ -81,6 +85,9 @@
       <if test="courseTeacher != null">
         #{courseTeacher,jdbcType=VARCHAR},
       </if>
+      <if test="courseUniversity != null">
+        #{courseUniversity,jdbcType=VARCHAR},
+      </if>
       <if test="courseLabel != null">
         #{courseLabel,jdbcType=VARCHAR},
       </if>
@@ -111,6 +118,7 @@
       course_summary_id = #{courseSummaryId,jdbcType=INTEGER},
       course_image_url = #{courseImageUrl,jdbcType=VARCHAR},
       course_teacher = #{courseTeacher,jdbcType=VARCHAR},
+      course_university = #{courseUniversity,jdbcType=VARCHAR},
       course_label = #{courseLabel,jdbcType=VARCHAR},
       course_homeworks = #{courseHomeworks,jdbcType=VARCHAR},
       course_institution = #{courseInstitution,jdbcType=VARCHAR},

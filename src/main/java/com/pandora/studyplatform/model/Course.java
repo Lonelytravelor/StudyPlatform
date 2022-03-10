@@ -13,6 +13,8 @@ public class Course {
 
     private String courseTeacher;
 
+    private String courseUniversity;
+
     private String courseLabel;
 
     private String courseHomeworks;
@@ -68,6 +70,14 @@ public class Course {
 
     public void setCourseTeacher(String courseTeacher) {
         this.courseTeacher = courseTeacher;
+    }
+
+    public String getCourseUniversity() {
+        return courseUniversity;
+    }
+
+    public void setCourseUniversity(String courseUniversity) {
+        this.courseUniversity = courseUniversity;
     }
 
     public String getCourseLabel() {
@@ -137,6 +147,7 @@ public class Course {
         sb.append(", courseSummaryId=").append(courseSummaryId);
         sb.append(", courseImageUrl=").append(courseImageUrl);
         sb.append(", courseTeacher=").append(courseTeacher);
+        sb.append(", courseUniversity=").append(courseUniversity);
         sb.append(", courseLabel=").append(courseLabel);
         sb.append(", courseHomeworks=").append(courseHomeworks);
         sb.append(", courseInstitution=").append(courseInstitution);
