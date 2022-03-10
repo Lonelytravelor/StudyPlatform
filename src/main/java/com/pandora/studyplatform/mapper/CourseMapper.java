@@ -35,10 +35,9 @@ public interface CourseMapper {
 
     List<Course> selectIndexCourse();
 
-    List<Course> selectAllByCourseLabel(@Param("courseLabel")String courseLabel);
+    List<Course> selectAllByCourseLabel(@Param("courseLabel") String courseLabel);
 
-    List<Course> selectAllByCourseLabelLimit(@Param("courseLabel")String courseLabel);
+    List<Course> selectAllByCourseLabelLimit(@Param("courseLabel") String courseLabel);
 
-    List<Course> selectByCourseNameLike(@Param("likeCourseName")String likeCourseName);
-
+    List<Course> selectByCourseNameLike(@Param("likeCourseName") String likeCourseName);
 }

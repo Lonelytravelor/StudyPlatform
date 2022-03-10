@@ -1,7 +1,6 @@
 package com.pandora.studyplatform.model;
 
-import java.time.LocalDateTime;
-import java.util.List;
+import java.time.LocalDateTime;import java.util.List;
 
 public class Course {
     private Integer courseId;
@@ -10,54 +9,26 @@ public class Course {
 
     private Integer courseSummaryId;
 
-    private transient CourseSummary courseSummary;
-
     private String courseImageUrl;
 
     private String courseTeacher;
 
     private String courseLabel;
 
+    private String courseHomeworks;
+
     private String courseInstitution;
 
     private String courseAnnouncementId;
 
-    private transient List<CourseAnnouncement> courseAnnouncementList;
-
     private String courseReferenceId;
-
-    private transient List<CourseReference> courseReferenceList;
 
     private LocalDateTime courseReleaseTime;
 
     private Integer courseSelected;
-
-    public Course() {
-    }
-
-    public CourseSummary getCourseSummary() {
-        return courseSummary;
-    }
-
-    public void setCourseSummary(CourseSummary courseSummary) {
-        this.courseSummary = courseSummary;
-    }
-
-    public List<CourseAnnouncement> getCourseAnnouncementList() {
-        return courseAnnouncementList;
-    }
-
-    public void setCourseAnnouncementList(List<CourseAnnouncement> courseAnnouncementList) {
-        this.courseAnnouncementList = courseAnnouncementList;
-    }
-
-    public List<CourseReference> getCourseReferenceList() {
-        return courseReferenceList;
-    }
-
-    public void setCourseReferenceList(List<CourseReference> courseReferenceList) {
-        this.courseReferenceList = courseReferenceList;
-    }
+    private transient CourseSummary courseSummary;
+    private transient List<CourseAnnouncement> courseAnnouncementList;
+    private transient List<CourseReference> courseReferenceList;
 
     public Integer getCourseId() {
         return courseId;
@@ -105,6 +76,14 @@ public class Course {
 
     public void setCourseLabel(String courseLabel) {
         this.courseLabel = courseLabel;
+    }
+
+    public String getCourseHomeworks() {
+        return courseHomeworks;
+    }
+
+    public void setCourseHomeworks(String courseHomeworks) {
+        this.courseHomeworks = courseHomeworks;
     }
 
     public String getCourseInstitution() {
@@ -159,6 +138,7 @@ public class Course {
         sb.append(", courseImageUrl=").append(courseImageUrl);
         sb.append(", courseTeacher=").append(courseTeacher);
         sb.append(", courseLabel=").append(courseLabel);
+        sb.append(", courseHomeworks=").append(courseHomeworks);
         sb.append(", courseInstitution=").append(courseInstitution);
         sb.append(", courseAnnouncementId=").append(courseAnnouncementId);
         sb.append(", courseReferenceId=").append(courseReferenceId);
@@ -166,5 +146,29 @@ public class Course {
         sb.append(", courseSelected=").append(courseSelected);
         sb.append("]");
         return sb.toString();
+    }
+
+    public CourseSummary getCourseSummary() {
+        return courseSummary;
+    }
+
+    public void setCourseSummary(CourseSummary courseSummary) {
+        this.courseSummary = courseSummary;
+    }
+
+    public List<CourseAnnouncement> getCourseAnnouncementList() {
+        return courseAnnouncementList;
+    }
+
+    public void setCourseAnnouncementList(List<CourseAnnouncement> courseAnnouncementList) {
+        this.courseAnnouncementList = courseAnnouncementList;
+    }
+
+    public List<CourseReference> getCourseReferenceList() {
+        return courseReferenceList;
+    }
+
+    public void setCourseReferenceList(List<CourseReference> courseReferenceList) {
+        this.courseReferenceList = courseReferenceList;
     }
 }
