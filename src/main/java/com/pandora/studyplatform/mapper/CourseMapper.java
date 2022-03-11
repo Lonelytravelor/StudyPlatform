@@ -40,4 +40,10 @@ public interface CourseMapper {
     List<Course> selectAllByCourseLabelLimit(@Param("courseLabel") String courseLabel);
 
     List<Course> selectByCourseNameLike(@Param("likeCourseName") String likeCourseName);
+
+    List<String> selectCourseUniversity();
+
+    List<Course> selectAllByCourseUniversityLimit(@Param("courseUniversity") String courseUniversity);
+
+
 }

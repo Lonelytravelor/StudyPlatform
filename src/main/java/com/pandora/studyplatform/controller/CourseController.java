@@ -169,5 +169,21 @@ public class CourseController {
         return courseSummary;
     }
 
+    @RequestMapping("/loadCourseUniversity")
+    @ResponseBody
+    public Map<String, List<Course>> loadCourseUniversity(){
+        List<String> courseUniversity = courseService.selectCourseUniversity();
+        Map<String, List<Course>> courseSummaryMap = new HashMap<>();
+        for ( String c : courseUniversity){
+            courseSummaryMap.put(c, courseService.selectAllByCourseUniversityLimit(c));
+        }
+        return courseSummaryMap;
+    }
+
+    @RequestMapping("/hello")
+    @ResponseBody
+    public String hello(){
+        return "hello";
+    }
 
 }
