@@ -180,10 +180,16 @@ public class CourseController {
         return courseSummaryMap;
     }
 
+    @RequestMapping("/selectAllByCourseUniversity")
+    @ResponseBody
+    public List<Course> selectAllByCourseUniversity(String university){
+        return courseService.selectAllByCourseUniversity(university);
+    }
+
+
     @RequestMapping("/hello")
     @ResponseBody
     public String hello(){
         return "hello";
     }
-
 }

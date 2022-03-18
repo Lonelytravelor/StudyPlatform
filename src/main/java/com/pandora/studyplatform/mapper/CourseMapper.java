@@ -45,5 +45,8 @@ public interface CourseMapper {
 
     List<Course> selectAllByCourseUniversityLimit(@Param("courseUniversity") String courseUniversity);
 
+    List<Course> selectAllByCourseUniversity(@Param("courseUniversity")String courseUniversity);
+
+
 
 }

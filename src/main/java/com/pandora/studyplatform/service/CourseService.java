@@ -59,7 +59,9 @@ public class CourseService {
         return courseMapper.selectAllByCourseUniversityLimit(courseUniversity);
     }
 
-
+	public List<Course> selectAllByCourseUniversity(String courseUniversity){
+		 return courseMapper.selectAllByCourseUniversity(courseUniversity);
+	}
 
 }
 
