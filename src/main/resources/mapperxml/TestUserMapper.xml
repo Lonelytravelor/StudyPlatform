@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pandora.studyplatform.mapper.TestUserMapper">
+  <resultMap id="BaseResultMap" type="com.pandora.studyplatform.model.TestUser">
+    <!--@mbg.generated-->
+    <!--@Table test_user-->
+    <id column="test_id" jdbcType="INTEGER" property="testId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    test_id, user_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from test_user
+    where test_id = #{testId,jdbcType=INTEGER}
+  </select>
+  <insert id="insertSelective" parameterType="com.pandora.studyplatform.model.TestUser">
+    <!--@mbg.generated-->
+    insert into test_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+        test_id,user_id,
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+        #{testId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER},
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.pandora.studyplatform.model.TestUser">
+    <!--@mbg.generated-->
+    update test_user
+    set user_id = #{userId,jdbcType=INTEGER}
+    where test_id = #{testId,jdbcType=INTEGER}
+  </update>
+</mapper>

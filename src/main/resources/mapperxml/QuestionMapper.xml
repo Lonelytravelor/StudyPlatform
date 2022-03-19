@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pandora.studyplatform.mapper.QuestionMapper">
+  <resultMap id="BaseResultMap" type="com.pandora.studyplatform.model.Question">
+    <!--@mbg.generated-->
+    <!--@Table question-->
+    <id column="question_id" jdbcType="INTEGER" property="questionId" />
+    <result column="question_content" jdbcType="VARCHAR" property="questionContent" />
+    <result column="question_style" jdbcType="VARCHAR" property="questionStyle" />
+    <result column="question_answer_a" jdbcType="VARCHAR" property="questionAnswerA" />
+    <result column="question_answer_b" jdbcType="VARCHAR" property="questionAnswerB" />
+    <result column="question_answer_c" jdbcType="VARCHAR" property="questionAnswerC" />
+    <result column="question_answer_d" jdbcType="VARCHAR" property="questionAnswerD" />
+    <result column="question_answer" jdbcType="VARCHAR" property="questionAnswer" />
+    <result column="question_answer_explain" jdbcType="VARCHAR" property="questionAnswerExplain" />
+    <result column="question_difficulty_level" jdbcType="VARCHAR" property="questionDifficultyLevel" />
+    <result column="question_point" jdbcType="VARCHAR" property="questionPoint" />
+    <result column="question_section" jdbcType="VARCHAR" property="questionSection" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    question_id, question_content, question_style, question_answer_a, question_answer_b, 
+    question_answer_c, question_answer_d, question_answer, question_answer_explain, question_difficulty_level, 
+    question_point, question_section
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from question
+    where question_id = #{questionId,jdbcType=INTEGER}
+  </select>
+  <insert id="insertSelective" keyColumn="question_id" keyProperty="questionId" parameterType="com.pandora.studyplatform.model.Question" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into question
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="questionContent != null">
+        question_content,
+      </if>
+      <if test="questionStyle != null">
+        question_style,
+      </if>
+      <if test="questionAnswerA != null">
+        question_answer_a,
+      </if>
+      <if test="questionAnswerB != null">
+        question_answer_b,
+      </if>
+      <if test="questionAnswerC != null">
+        question_answer_c,
+      </if>
+      <if test="questionAnswerD != null">
+        question_answer_d,
+      </if>
+      <if test="questionAnswer != null">
+        question_answer,
+      </if>
+      <if test="questionAnswerExplain != null">
+        question_answer_explain,
+      </if>
+      <if test="questionDifficultyLevel != null">
+        question_difficulty_level,
+      </if>
+      <if test="questionPoint != null">
+        question_point,
+      </if>
+      <if test="questionSection != null">
+        question_section,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="questionContent != null">
+        #{questionContent,jdbcType=VARCHAR},
+      </if>
+      <if test="questionStyle != null">
+        #{questionStyle,jdbcType=VARCHAR},
+      </if>
+      <if test="questionAnswerA != null">
+        #{questionAnswerA,jdbcType=VARCHAR},
+      </if>
+      <if test="questionAnswerB != null">
+        #{questionAnswerB,jdbcType=VARCHAR},
+      </if>
+      <if test="questionAnswerC != null">
+        #{questionAnswerC,jdbcType=VARCHAR},
+      </if>
+      <if test="questionAnswerD != null">
+        #{questionAnswerD,jdbcType=VARCHAR},
+      </if>
+      <if test="questionAnswer != null">
+        #{questionAnswer,jdbcType=VARCHAR},
+      </if>
+      <if test="questionAnswerExplain != null">
+        #{questionAnswerExplain,jdbcType=VARCHAR},
+      </if>
+      <if test="questionDifficultyLevel != null">
+        #{questionDifficultyLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="questionPoint != null">
+        #{questionPoint,jdbcType=VARCHAR},
+      </if>
+      <if test="questionSection != null">
+        #{questionSection,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.pandora.studyplatform.model.Question">
+    <!--@mbg.generated-->
+    update question
+    set question_content = #{questionContent,jdbcType=VARCHAR},
+      question_style = #{questionStyle,jdbcType=VARCHAR},
+      question_answer_a = #{questionAnswerA,jdbcType=VARCHAR},
+      question_answer_b = #{questionAnswerB,jdbcType=VARCHAR},
+      question_answer_c = #{questionAnswerC,jdbcType=VARCHAR},
+      question_answer_d = #{questionAnswerD,jdbcType=VARCHAR},
+      question_answer = #{questionAnswer,jdbcType=VARCHAR},
+      question_answer_explain = #{questionAnswerExplain,jdbcType=VARCHAR},
+      question_difficulty_level = #{questionDifficultyLevel,jdbcType=VARCHAR},
+      question_point = #{questionPoint,jdbcType=VARCHAR},
+      question_section = #{questionSection,jdbcType=VARCHAR}
+    where question_id = #{questionId,jdbcType=INTEGER}
+  </update>
+
+<!--auto generated by MybatisCodeHelper on 2022-03-19-->
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from question
+    limit 20
+  </select>
+</mapper>
