@@ -30,6 +30,14 @@ public interface QuestionMapper {
 
     List<Question> selectAll();
 
+    List<Question> selectAllByQuestionSectionLike(@Param("likeQuestionSection")String likeQuestionSection);
+
+    List<Question> selectAllByQuestionStyleMultipleAndQuestionSectionLike(@Param("likeQuestionSection")String likeQuestionSection);
+
+    List<Question> selectAllByQuestionStyleSingleAndQuestionSectionLike(@Param("likeQuestionSection")String likeQuestionSection);
+
+    List<Question> selectAllByQuestionStyleJudgeAndQuestionSectionLike(@Param("likeQuestionSection")String likeQuestionSection);
+
 
 
 

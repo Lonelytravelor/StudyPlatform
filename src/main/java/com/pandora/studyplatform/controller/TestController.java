@@ -37,7 +37,7 @@ public class TestController {
         LocalDateTime now = LocalDateTime.now();
         test.setTestTime(now);
         test.setTestNum(20);
-        List<Question> questions = questionService.selectAll();
+        List<Question> questions = questionService.selectAllByQuestionSectionPlanA(title.substring(0,3));
         test.setQuestionList(questions);
         String questionList = questions.get(0).getQuestionId().toString();
         for (int i = 1; i < questions.size(); i++){
@@ -45,10 +45,10 @@ public class TestController {
             questionList += questions.get(i).getQuestionId().toString();
         }
         test.setTestQuestionList(questionList);
-        testService.insertSelective(test);
-        Integer testId = testService.selectOneTestId();
-        TestUser testUser = new TestUser(testId, userId);
-        testUserService.insertSelective(testUser);
+//        testService.insertSelective(test);
+//        Integer testId = testService.selectOneTestId();
+//        TestUser testUser = new TestUser(testId, userId);
+//        testUserService.insertSelective(testUser);
         return test;
     }
 }

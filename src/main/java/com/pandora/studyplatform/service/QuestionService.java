@@ -1,4 +1,5 @@
 package com.pandora.studyplatform.service;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -29,4 +30,14 @@ public class QuestionService{
 	public List<Question> selectAll(){
 		 return questionMapper.selectAll();
 	}
+
+	public List<Question> selectAllByQuestionSectionPlanA(String likeQuestionSection){
+        List<Question> questions = new ArrayList<>();
+        questions.addAll(questionMapper.selectAllByQuestionStyleSingleAndQuestionSectionLike(likeQuestionSection));
+        questions.addAll(questionMapper.selectAllByQuestionStyleJudgeAndQuestionSectionLike(likeQuestionSection));
+        questions.addAll(questionMapper.selectAllByQuestionStyleMultipleAndQuestionSectionLike(likeQuestionSection));
+        return questions;
+	}
+
+
 }
