@@ -31,14 +31,17 @@ public class TestController {
 
     @RequestMapping("/createTest")
     @ResponseBody
-    public Test createTest(String title, Integer userId){
+    public Test createTest(String title, Integer userId, Integer courseId){
         Test test = new Test();
         test.setTestTitle(title);
         LocalDateTime now = LocalDateTime.now();
         test.setTestTime(now);
         test.setTestNum(20);
-        List<Question> questions = questionService.selectAllByQuestionSectionPlanA(title.substring(0,3));
+        List<Question> questions = questionService.selectAllByQuestionSectionAndCourseId(title, courseId);
         test.setQuestionList(questions);
+        if (questions.size() == 0){
+            return null;
+        }
         String questionList = questions.get(0).getQuestionId().toString();
         for (int i = 1; i < questions.size(); i++){
             questionList += ",";

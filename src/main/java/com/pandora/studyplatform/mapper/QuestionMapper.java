@@ -1,14 +1,13 @@
 package com.pandora.studyplatform.mapper;
-import org.apache.ibatis.annotations.Param;
-import java.util.List;
 
 import com.pandora.studyplatform.model.Question;
-import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Mapper;import org.apache.ibatis.annotations.Param;import java.util.List;
 
 @Mapper
 public interface QuestionMapper {
     /**
      * insert record to table selective
+     *
      * @param record the record
      * @return insert count
      */
@@ -16,6 +15,7 @@ public interface QuestionMapper {
 
     /**
      * select by primary key
+     *
      * @param questionId primary key
      * @return object by primary key
      */
@@ -23,6 +23,7 @@ public interface QuestionMapper {
 
     /**
      * update record
+     *
      * @param record the updated record
      * @return update count
      */
@@ -30,16 +31,19 @@ public interface QuestionMapper {
 
     List<Question> selectAll();
 
-    List<Question> selectAllByQuestionSectionLike(@Param("likeQuestionSection")String likeQuestionSection);
+    List<Question> selectAllByQuestionSectionLike(@Param("likeQuestionSection") String likeQuestionSection);
 
-    List<Question> selectAllByQuestionStyleMultipleAndQuestionSectionLike(@Param("likeQuestionSection")String likeQuestionSection);
+    List<Question> selectAllByQuestionStyleMultipleAndQuestionSectionLike(@Param("likeQuestionSection") String likeQuestionSection);
 
-    List<Question> selectAllByQuestionStyleSingleAndQuestionSectionLike(@Param("likeQuestionSection")String likeQuestionSection);
+    List<Question> selectAllByQuestionStyleSingleAndQuestionSectionLike(@Param("likeQuestionSection") String likeQuestionSection);
 
-    List<Question> selectAllByQuestionStyleJudgeAndQuestionSectionLike(@Param("likeQuestionSection")String likeQuestionSection);
+    List<Question> selectAllByQuestionStyleJudgeAndQuestionSectionLike(@Param("likeQuestionSection") String likeQuestionSection);
 
+    List<Question> selectAllByQuestionSectionAndQuestionCourseIdBySingle(@Param("questionSection")String questionSection,@Param("questionCourseId")Integer questionCourseId);
 
+	List<Question> selectAllByQuestionSectionAndQuestionCourseIdByMultiple(@Param("questionSection")String questionSection,@Param("questionCourseId")Integer questionCourseId);
 
+	List<Question> selectAllByQuestionSectionAndQuestionCourseIdByJudge(@Param("questionSection")String questionSection,@Param("questionCourseId")Integer questionCourseId);
 
 
 }

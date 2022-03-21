@@ -15,6 +15,8 @@ public class Question {
 
     private String questionAnswerD;
 
+    private Integer questionScore;
+
     private String questionAnswer;
 
     private String questionAnswerExplain;
@@ -24,6 +26,8 @@ public class Question {
     private String questionPoint;
 
     private String questionSection;
+
+    private Integer questionCourseId;
 
     public Integer getQuestionId() {
         return questionId;
@@ -81,6 +85,14 @@ public class Question {
         this.questionAnswerD = questionAnswerD;
     }
 
+    public Integer getQuestionScore() {
+        return questionScore;
+    }
+
+    public void setQuestionScore(Integer questionScore) {
+        this.questionScore = questionScore;
+    }
+
     public String getQuestionAnswer() {
         return questionAnswer;
     }
@@ -121,6 +133,14 @@ public class Question {
         this.questionSection = questionSection;
     }
 
+    public Integer getQuestionCourseId() {
+        return questionCourseId;
+    }
+
+    public void setQuestionCourseId(Integer questionCourseId) {
+        this.questionCourseId = questionCourseId;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -134,11 +154,13 @@ public class Question {
         sb.append(", questionAnswerB=").append(questionAnswerB);
         sb.append(", questionAnswerC=").append(questionAnswerC);
         sb.append(", questionAnswerD=").append(questionAnswerD);
+        sb.append(", questionScore=").append(questionScore);
         sb.append(", questionAnswer=").append(questionAnswer);
         sb.append(", questionAnswerExplain=").append(questionAnswerExplain);
         sb.append(", questionDifficultyLevel=").append(questionDifficultyLevel);
         sb.append(", questionPoint=").append(questionPoint);
         sb.append(", questionSection=").append(questionSection);
+        sb.append(", questionCourseId=").append(questionCourseId);
         sb.append("]");
         return sb.toString();
     }
