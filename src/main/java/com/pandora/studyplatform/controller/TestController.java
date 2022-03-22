@@ -51,10 +51,10 @@ public class TestController {
             questionList += questions.get(i).getQuestionId().toString();
         }
         test.setTestQuestionList(questionList);
-//        testService.insertSelective(test);
-//        Integer testId = testService.selectOneTestId();
-//        TestUser testUser = new TestUser(testId, userId);
-//        testUserService.insertSelective(testUser);
+        testService.insertSelective(test);
+        Integer testId = testService.selectOneTestId();
+        TestUser testUser = new TestUser(testId, userId);
+        testUserService.insertSelective(testUser);
         return test;
     }
 

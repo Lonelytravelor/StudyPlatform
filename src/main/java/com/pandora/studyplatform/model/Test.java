@@ -1,7 +1,6 @@
 package com.pandora.studyplatform.model;
 
-import java.time.LocalDateTime;
-import java.util.List;
+import java.time.LocalDateTime;import java.util.List;
 
 public class Test {
     private Integer testId;
@@ -14,34 +13,13 @@ public class Test {
 
     private String testQuestionList;
 
-    private transient List<Question> questionList;
-
     private String testAnswerList;
-
-    private transient List<String> answerList;
 
     private String testState;
 
-    private String testScore;
-
-    public Test() {
-    }
-
-    public List<Question> getQuestionList() {
-        return questionList;
-    }
-
-    public void setQuestionList(List<Question> questionList) {
-        this.questionList = questionList;
-    }
-
-    public List<String> getAnswerList() {
-        return answerList;
-    }
-
-    public void setAnswerList(List<String> answerList) {
-        this.answerList = answerList;
-    }
+    private Integer testScore;
+    private transient List<Question> questionList;
+    private transient List<String> answerList;
 
     public Integer getTestId() {
         return testId;
@@ -99,11 +77,11 @@ public class Test {
         this.testState = testState;
     }
 
-    public String getTestScore() {
+    public Integer getTestScore() {
         return testScore;
     }
 
-    public void setTestScore(String testScore) {
+    public void setTestScore(Integer testScore) {
         this.testScore = testScore;
     }
 
@@ -123,5 +101,21 @@ public class Test {
         sb.append(", testScore=").append(testScore);
         sb.append("]");
         return sb.toString();
+    }
+
+    public List<Question> getQuestionList() {
+        return questionList;
+    }
+
+    public void setQuestionList(List<Question> questionList) {
+        this.questionList = questionList;
+    }
+
+    public List<String> getAnswerList() {
+        return answerList;
+    }
+
+    public void setAnswerList(List<String> answerList) {
+        this.answerList = answerList;
     }
 }

@@ -1,15 +1,13 @@
 package com.pandora.studyplatform.mapper;
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
-import java.time.LocalDateTime;
 
 import com.pandora.studyplatform.model.Test;
-import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Mapper;import org.apache.ibatis.annotations.Param;import java.time.LocalDateTime;
 
 @Mapper
 public interface TestMapper {
     /**
      * insert record to table selective
+     *
      * @param record the record
      * @return insert count
      */
@@ -17,6 +15,7 @@ public interface TestMapper {
 
     /**
      * select by primary key
+     *
      * @param testId primary key
      * @return object by primary key
      */
@@ -24,18 +23,19 @@ public interface TestMapper {
 
     /**
      * update record
+     *
      * @param record the updated record
      * @return update count
      */
     int updateByPrimaryKey(Test record);
 
-    Test selectOneByTestTime(@Param("testTime")LocalDateTime testTime);
+    Test selectOneByTestTime(@Param("testTime") LocalDateTime testTime);
 
-    Integer selectOneTestIdByTestTime(@Param("testTime")LocalDateTime testTime);
+    Integer selectOneTestIdByTestTime(@Param("testTime") LocalDateTime testTime);
 
     Integer selectOneTestId();
 
-    int updateTestScoreAndTestAnswerListAndTestStateByTestId(@Param("updatedTestScore")String updatedTestScore,@Param("updatedTestAnswerList")String updatedTestAnswerList,@Param("updatedTestState")String updatedTestState,@Param("testId")Integer testId);
+    int updateTestScoreAndTestAnswerListAndTestStateByTestId(@Param("updatedTestScore")Integer updatedTestScore,@Param("updatedTestAnswerList")String updatedTestAnswerList,@Param("updatedTestState")String updatedTestState,@Param("testId")Integer testId);
 
 
 }
