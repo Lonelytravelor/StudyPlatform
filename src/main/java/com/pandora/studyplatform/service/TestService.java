@@ -39,6 +39,13 @@ public class TestService{
         return testMapper.selectOneTestId();
     }
 
+	public int updateTestScoreAndTestAnswerListAndTestStateByTestId(String updatedTestScore,String updatedTestAnswerList,String updatedTestState,Integer testId){
+		 return testMapper.updateTestScoreAndTestAnswerListAndTestStateByTestId(updatedTestScore,updatedTestAnswerList,updatedTestState,testId);
+	}
+
+
+
+
 
 
 }

@@ -34,4 +34,8 @@ public interface TestMapper {
     Integer selectOneTestIdByTestTime(@Param("testTime")LocalDateTime testTime);
 
     Integer selectOneTestId();
+
+    int updateTestScoreAndTestAnswerListAndTestStateByTestId(@Param("updatedTestScore")String updatedTestScore,@Param("updatedTestAnswerList")String updatedTestAnswerList,@Param("updatedTestState")String updatedTestState,@Param("testId")Integer testId);
+
+
 }
