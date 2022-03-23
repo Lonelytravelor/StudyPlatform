@@ -12,11 +12,12 @@
     <result column="test_answer_list" jdbcType="VARCHAR" property="testAnswerList" />
     <result column="test_state" jdbcType="VARCHAR" property="testState" />
     <result column="test_score" jdbcType="INTEGER" property="testScore" />
+    <result column="test_course_id" jdbcType="INTEGER" property="testCourseId" />
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
     test_id, test_title, test_time, test_num, test_question_list, test_answer_list, test_state, 
-    test_score
+    test_score, test_course_id
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     <!--@mbg.generated-->
@@ -50,6 +51,9 @@
       <if test="testScore != null">
         test_score,
       </if>
+      <if test="testCourseId != null">
+        test_course_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="testTitle != null">
@@ -73,6 +77,9 @@
       <if test="testScore != null">
         #{testScore,jdbcType=INTEGER},
       </if>
+      <if test="testCourseId != null">
+        #{testCourseId,jdbcType=INTEGER},
+      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.pandora.studyplatform.model.Test">
@@ -84,7 +91,8 @@
       test_question_list = #{testQuestionList,jdbcType=VARCHAR},
       test_answer_list = #{testAnswerList,jdbcType=VARCHAR},
       test_state = #{testState,jdbcType=VARCHAR},
-      test_score = #{testScore,jdbcType=INTEGER}
+      test_score = #{testScore,jdbcType=INTEGER},
+      test_course_id = #{testCourseId,jdbcType=INTEGER}
     where test_id = #{testId,jdbcType=INTEGER}
   </update>
 

@@ -18,6 +18,8 @@ public class Test {
     private String testState;
 
     private Integer testScore;
+
+    private Integer testCourseId;
     private transient List<Question> questionList;
     private transient List<String> answerList;
 
@@ -85,6 +87,14 @@ public class Test {
         this.testScore = testScore;
     }
 
+    public Integer getTestCourseId() {
+        return testCourseId;
+    }
+
+    public void setTestCourseId(Integer testCourseId) {
+        this.testCourseId = testCourseId;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -99,6 +109,7 @@ public class Test {
         sb.append(", testAnswerList=").append(testAnswerList);
         sb.append(", testState=").append(testState);
         sb.append(", testScore=").append(testScore);
+        sb.append(", testCourseId=").append(testCourseId);
         sb.append("]");
         return sb.toString();
     }

@@ -40,21 +40,19 @@ public class TestService {
         return testMapper.selectOneTestId();
     }
 
-	public int updateTestScoreAndTestAnswerListAndTestStateByTestId(Integer updatedTestScore,String updatedTestAnswerList,String updatedTestState,Integer testId){
-		 return testMapper.updateTestScoreAndTestAnswerListAndTestStateByTestId(updatedTestScore,updatedTestAnswerList,updatedTestState,testId);
-	}
+    public int updateTestScoreAndTestAnswerListAndTestStateByTestId(Integer updatedTestScore, String updatedTestAnswerList, String updatedTestState, Integer testId) {
+        return testMapper.updateTestScoreAndTestAnswerListAndTestStateByTestId(updatedTestScore, updatedTestAnswerList, updatedTestState, testId);
+    }
 
-	public Test selectSimpleOneByTestId(Integer testId){
-		 return testMapper.selectOneByTestId(testId);
-	}
+    public Test selectSimpleOneByTestId(Integer testId) {
+        return testMapper.selectOneByTestId(testId);
+    }
 
-	public Test selectOneByTestIdAndTestTitle(Integer testId,String testTitle){
-		 return testMapper.selectOneByTestIdAndTestTitle(testId,testTitle);
-	}
-
-
-
+    public Test selectOneByTestIdAndTestTitle(Integer testId, String testTitle) {
+        return testMapper.selectOneByTestIdAndTestTitle(testId, testTitle);
+    }
 
 
 }
+
 
