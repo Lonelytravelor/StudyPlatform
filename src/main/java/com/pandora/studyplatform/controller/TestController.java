@@ -99,4 +99,17 @@ public class TestController {
         }
         return testList;
     }
+
+    @RequestMapping("/loadHistoricalTestByTestId")
+    @ResponseBody
+    public Test loadHistoricalTestByTestId(Integer testId){
+        List<Question> questions = new ArrayList<>();
+        Test test = testService.selectByPrimaryKey(testId);
+        String[] questionArray = test.getTestQuestionList().split(",");
+        for (String id : questionArray){
+            questions.add(questionService.selectByPrimaryKey(Integer.valueOf(id)));
+        }
+        test.setQuestionList(questions);
+        return test;
+    }
 }

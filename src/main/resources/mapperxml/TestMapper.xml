@@ -145,5 +145,6 @@
     test_id,test_title,test_score,test_time
     from test
     where test_id=#{testId,jdbcType=INTEGER} and test_course_id=#{testCourseId,jdbcType=INTEGER}
+    order by test_time
   </select>
 </mapper>
