@@ -40,6 +40,7 @@ public class TestController {
         LocalDateTime now = LocalDateTime.now();
         test.setTestTime(now);
         test.setTestNum(20);
+        test.setTestCourseId(courseId);
         List<Question> questions = questionService.selectAllByQuestionSectionAndCourseId(title, courseId);
         test.setQuestionList(questions);
         if (questions.size() == 0){
@@ -87,10 +88,14 @@ public class TestController {
     @ResponseBody
     public List<Test> loadHistoricalTest(@RequestBody JSONObject jsonParam){
         Integer userId = jsonParam.getInteger("userId");
+        Integer courseId = jsonParam.getInteger("courseId");
         List<Test> testList = new ArrayList<>();
         List<TestUser> testUsers = testUserService.selectAllByUserId(userId);
         for (TestUser test : testUsers){
-            testList.add(testService.selectSimpleOneByTestId(test.getTestId()));
+            Test test1 = testService.selectOneByTestIdAndTestCourseId(test.getTestId(), courseId);
+            if (test1 != null){
+                testList.add(test1);
+            }
         }
         return testList;
     }

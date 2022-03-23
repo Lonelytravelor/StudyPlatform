@@ -41,5 +41,8 @@ public interface TestMapper {
 
     List<Test> selectAll();
 
-    Test selectOneByTestIdAndTestTitle(@Param("testId") Integer testId, @Param("testTitle") String testTitle);
+    Test selectOneByTestIdAndTestCourseId(@Param("testId")Integer testId,@Param("testCourseId")Integer testCourseId);
+
+
+
 }

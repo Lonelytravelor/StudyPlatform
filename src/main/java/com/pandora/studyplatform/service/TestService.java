@@ -48,9 +48,13 @@ public class TestService {
         return testMapper.selectOneByTestId(testId);
     }
 
-    public Test selectOneByTestIdAndTestTitle(Integer testId, String testTitle) {
-        return testMapper.selectOneByTestIdAndTestTitle(testId, testTitle);
-    }
+
+	public Test selectOneByTestIdAndTestCourseId(Integer testId,Integer testCourseId){
+		 return testMapper.selectOneByTestIdAndTestCourseId(testId,testCourseId);
+	}
+
+
+
 
 
 }
