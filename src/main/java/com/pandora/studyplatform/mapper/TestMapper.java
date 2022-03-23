@@ -1,4 +1,5 @@
 package com.pandora.studyplatform.mapper;
+import java.util.List;
 
 import com.pandora.studyplatform.model.Test;
 import org.apache.ibatis.annotations.Mapper;import org.apache.ibatis.annotations.Param;import java.time.LocalDateTime;
@@ -36,6 +37,12 @@ public interface TestMapper {
     Integer selectOneTestId();
 
     int updateTestScoreAndTestAnswerListAndTestStateByTestId(@Param("updatedTestScore")Integer updatedTestScore,@Param("updatedTestAnswerList")String updatedTestAnswerList,@Param("updatedTestState")String updatedTestState,@Param("testId")Integer testId);
+
+    Test selectOneByTestId(@Param("testId")Integer testId);
+
+    List<Test> selectAll();
+
+    Test selectOneByTestIdAndTestTitle(@Param("testId")Integer testId,@Param("testTitle")String testTitle);
 
 
 }

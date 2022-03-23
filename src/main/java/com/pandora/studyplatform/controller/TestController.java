@@ -83,4 +83,15 @@ public class TestController {
         testService.updateTestScoreAndTestAnswerListAndTestStateByTestId(testScore, answers, "已完成", testId);
     }
 
+    @RequestMapping("/loadHistoricalTest")
+    @ResponseBody
+    public List<Test> loadHistoricalTest(@RequestBody JSONObject jsonParam){
+        Integer userId = jsonParam.getInteger("userId");
+        List<Test> testList = new ArrayList<>();
+        List<TestUser> testUsers = testUserService.selectAllByUserId(userId);
+        for (TestUser test : testUsers){
+            testList.add(testService.selectSimpleOneByTestId(test.getTestId()));
+        }
+        return testList;
+    }
 }

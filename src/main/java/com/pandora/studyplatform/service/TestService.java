@@ -44,6 +44,14 @@ public class TestService {
 		 return testMapper.updateTestScoreAndTestAnswerListAndTestStateByTestId(updatedTestScore,updatedTestAnswerList,updatedTestState,testId);
 	}
 
+	public Test selectSimpleOneByTestId(Integer testId){
+		 return testMapper.selectOneByTestId(testId);
+	}
+
+	public Test selectOneByTestIdAndTestTitle(Integer testId,String testTitle){
+		 return testMapper.selectOneByTestIdAndTestTitle(testId,testTitle);
+	}
+
 
 
 

@@ -1,4 +1,6 @@
 package com.pandora.studyplatform.mapper;
+import org.apache.ibatis.annotations.Param;
+import java.util.List;
 
 import com.pandora.studyplatform.model.TestUser;
 import org.apache.ibatis.annotations.Mapper;
@@ -25,4 +27,8 @@ public interface TestUserMapper {
      * @return update count
      */
     int updateByPrimaryKey(TestUser record);
+
+    List<TestUser> selectAllByUserId(@Param("userId")Integer userId);
+
+
 }

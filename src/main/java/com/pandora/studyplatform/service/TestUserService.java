@@ -1,4 +1,5 @@
 package com.pandora.studyplatform.service;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
@@ -24,5 +25,12 @@ public class TestUserService{
     public int updateByPrimaryKey(TestUser record) {
         return testUserMapper.updateByPrimaryKey(record);
     }
+
+	public List<TestUser> selectAllByUserId(Integer userId){
+		 return testUserMapper.selectAllByUserId(userId);
+	}
+
+
+
 
 }
