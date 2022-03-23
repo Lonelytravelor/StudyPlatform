@@ -111,6 +111,12 @@ public class CourseController {
         Integer userId = jsonParam.getInteger("userId");
         String courseId = jsonParam.getString("courseId");
         String coursesId = userCourseService.selectOneCoursesIdByUserid(userId);
+        Integer selectedNum = courseService.selectOneCourseSelectedByCourseId(Integer.valueOf(courseId));
+        if (selectedNum == null){
+            courseService.updateCourseSelectedByCourseId(1, Integer.valueOf(courseId));
+        }else {
+            courseService.updateCourseSelectedByCourseId(selectedNum+1, Integer.valueOf(courseId));
+        }
         if (coursesId == null){
             userCourseService.updateCoursesIdByUserid(courseId, userId);
         } else if ( !coursesId.contains(courseId) ){

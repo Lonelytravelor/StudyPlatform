@@ -63,6 +63,27 @@ public class CourseService {
 		 return courseMapper.selectAllByCourseUniversity(courseUniversity);
 	}
 
+	public int updateCourseSelectedByCourseId(Integer updatedCourseSelected,Integer courseId){
+		 return courseMapper.updateCourseSelectedByCourseId(updatedCourseSelected,courseId);
+	}
+
+	public List<Integer> selectCourseSelectedByCourseId(Integer courseId){
+		 return courseMapper.selectCourseSelectedByCourseId(courseId);
+	}
+
+	public Integer selectOneCourseSelectedByCourseId(Integer courseId){
+		 return courseMapper.selectOneCourseSelectedByCourseId(courseId);
+	}
+
+
+
+
+
+
+
+
+
+
 }
 
 

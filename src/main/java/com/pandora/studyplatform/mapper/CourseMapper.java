@@ -47,6 +47,12 @@ public interface CourseMapper {
 
     List<Course> selectAllByCourseUniversity(@Param("courseUniversity")String courseUniversity);
 
+    int updateCourseSelectedByCourseId(@Param("updatedCourseSelected")Integer updatedCourseSelected,@Param("courseId")Integer courseId);
+
+	List<Integer> selectCourseSelectedByCourseId(@Param("courseId")Integer courseId);
+
+	Integer selectOneCourseSelectedByCourseId(@Param("courseId")Integer courseId);
+
 
 
 }
