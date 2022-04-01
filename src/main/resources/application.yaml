@@ -5,6 +5,12 @@ spring:
     username: root
     password: root
     url: jdbc:mysql://localhost:3306/studyplatform
+  neo4j:
+    uri: bolt://localhost:7687
+    authentication:
+      username: neo4j
+      password: 123456
+
 
 mybatis:
   type-aliases-package: com.pandora.model

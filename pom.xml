@@ -47,6 +47,10 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-neo4j</artifactId>
+        </dependency>
 <!--        以下是自己加载的依赖 -->
         <dependency>
             <groupId>com.alibaba</groupId>
