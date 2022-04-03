@@ -1,6 +1,7 @@
 package com.pandora.studyplatform.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.pandora.studyplatform.DAO.PointRepository;
 import com.pandora.studyplatform.model.*;
 import com.pandora.studyplatform.service.*;
 import org.springframework.stereotype.Controller;
@@ -30,6 +31,10 @@ public class CourseController {
     private UserCourseService userCourseService;
     @Resource
     private CourseLabelService courseLabelService;
+    @Resource
+    private CoursePointService coursePointService;
+    @Resource
+    PointRepository pointRepository;
 
     @RequestMapping("/loadCourseById")
     @ResponseBody
@@ -197,5 +202,24 @@ public class CourseController {
     @ResponseBody
     public String hello(){
         return "hello";
+    }
+
+    @RequestMapping("/loadCoursePointIndex")
+    @ResponseBody
+    public Point loadCoursePointIndex(Integer courseId){
+        Long pointId = Long.valueOf(coursePointService.selectOnePointIdByCourseId(courseId));
+        Optional<Point> optional = pointRepository.findById(pointId);
+        Point point = optional.get();
+        List<Point> subPoints1 = pointRepository.findSubPointById(point.getName());
+        point.setNextPoints(subPoints1);
+        for (Point point1 : subPoints1 ){
+            List<Point> subPoints2 = pointRepository.findSubPointById(point1.getName());
+            point1.setNextPoints(subPoints2);
+            for (Point point2 : subPoints2) {
+                List<Point> subPoints3 = pointRepository.findSubPointById(point2.getName());
+                point2.setNextPoints(subPoints3);
+            }
+        }
+        return point;
     }
 }

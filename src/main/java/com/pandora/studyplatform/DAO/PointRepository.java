@@ -18,11 +18,11 @@ import java.util.List;
 public interface PointRepository extends Neo4jRepository<Point,Long> {
     @Query("MATCH (n:知识点 {name:$pointName}),(m:关系),(n2:知识点)\n" +
             "where n.name = m.sub and n2.name = m.obj\n" +
-            "return n,m,n2")
+            "return n2")
     List<Point> findSubPointById(String pointName);
 
     @Query("MATCH (n:知识点 {name:$pointName}),(m:关系),(n2:知识点)\n" +
             "where n.name = m.obj and n2.name = m.sub\n" +
-            "return n,m,n2")
+            "return n2")
     List<Point> findPrePointById(String pointName);
 }

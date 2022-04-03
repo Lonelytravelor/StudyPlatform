@@ -1,4 +1,5 @@
 package com.pandora.studyplatform.mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.pandora.studyplatform.model.CoursePoint;
 import org.apache.ibatis.annotations.Mapper;
@@ -25,4 +26,8 @@ public interface CoursePointMapper {
      * @return update count
      */
     int updateByPrimaryKey(CoursePoint record);
+
+    Integer selectOnePointIdByCourseId(@Param("courseId")Integer courseId);
+
+
 }

@@ -28,6 +28,8 @@ public class Point implements Serializable {
     @Property
     private String videos;
 
+    private List<Point> nextPoints;
+
     public Point() {
     }
 
@@ -68,6 +70,14 @@ public class Point implements Serializable {
 
     public void setVideos(String videos) {
         this.videos = videos;
+    }
+
+    public List<Point> getNextPoints() {
+        return nextPoints;
+    }
+
+    public void setNextPoints(List<Point> nextPoints) {
+        this.nextPoints = nextPoints;
     }
 
     @Override
