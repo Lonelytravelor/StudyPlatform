@@ -50,7 +50,13 @@ class StudyPlatformApplicationTests {
         System.out.println("====================");
         System.out.println("====================");
         System.out.println("====================");
-
+        pointByName = pointRepository.findSubPointById("推理定律");
+        for (Point p : pointByName) {
+            System.out.println(p);
+        }
+        System.out.println("====================");
+        System.out.println("====================");
+        System.out.println("====================");
     }
 
 }

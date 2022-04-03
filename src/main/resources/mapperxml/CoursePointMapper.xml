@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pandora.studyplatform.mapper.CoursePointMapper">
+  <resultMap id="BaseResultMap" type="com.pandora.studyplatform.model.CoursePoint">
+    <!--@mbg.generated-->
+    <!--@Table course_point-->
+    <id column="course_id" jdbcType="INTEGER" property="courseId" />
+    <result column="point_id" jdbcType="INTEGER" property="pointId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    course_id, point_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from course_point
+    where course_id = #{courseId,jdbcType=INTEGER}
+  </select>
+  <insert id="insertSelective" parameterType="com.pandora.studyplatform.model.CoursePoint">
+    <!--@mbg.generated-->
+    insert into course_point
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="courseId != null">
+        course_id,
+      </if>
+      <if test="pointId != null">
+        point_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="courseId != null">
+        #{courseId,jdbcType=INTEGER},
+      </if>
+      <if test="pointId != null">
+        #{pointId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.pandora.studyplatform.model.CoursePoint">
+    <!--@mbg.generated-->
+    update course_point
+    set point_id = #{pointId,jdbcType=INTEGER}
+    where course_id = #{courseId,jdbcType=INTEGER}
+  </update>
+</mapper>
