@@ -1,11 +1,14 @@
 package com.pandora.studyplatform.model;
 
-import org.springframework.data.neo4j.core.schema.GeneratedValue;
-import org.springframework.data.neo4j.core.schema.Id;
-import org.springframework.data.neo4j.core.schema.Node;
-import org.springframework.data.neo4j.core.schema.Property;
+
+import org.neo4j.ogm.annotation.GeneratedValue;
+import org.neo4j.ogm.annotation.Id;
+import org.neo4j.ogm.annotation.NodeEntity;
+import org.neo4j.ogm.annotation.Property;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author : Pandora
@@ -13,7 +16,7 @@ import java.io.Serializable;
  * @description：
  */
 
-@Node(labels = {"知识点"})
+@NodeEntity(label = "知识点")
 public class Point implements Serializable {
     @Id
     @GeneratedValue

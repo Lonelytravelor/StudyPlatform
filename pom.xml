@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.6.3</version>
+        <version>2.3.5.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.pandora</groupId>
@@ -50,7 +50,9 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-neo4j</artifactId>
+            <version>2.3.5.RELEASE</version>
         </dependency>
+
 <!--        以下是自己加载的依赖 -->
         <dependency>
             <groupId>com.alibaba</groupId>
