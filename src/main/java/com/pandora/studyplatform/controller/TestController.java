@@ -1,6 +1,8 @@
 package com.pandora.studyplatform.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.pandora.studyplatform.DAO.PointRepository;
+import com.pandora.studyplatform.model.Point;
 import com.pandora.studyplatform.model.Question;
 import com.pandora.studyplatform.model.Test;
 import com.pandora.studyplatform.model.TestUser;
@@ -31,6 +33,8 @@ public class TestController {
     private TestService testService;
     @Resource
     private TestUserService testUserService;
+    @Resource
+    PointRepository pointRepository;
 
     @RequestMapping("/createTest")
     @ResponseBody
@@ -111,5 +115,16 @@ public class TestController {
         }
         test.setQuestionList(questions);
         return test;
+    }
+
+    @RequestMapping("/loadPrePoint")
+    @ResponseBody
+    public List<Point> loadPrePoint(String point){
+        List<Point> prePoints = pointRepository.findPrePointById(point);
+        for (Point point1 : prePoints) {
+            List<Point> point2 = pointRepository.findSubPointById(point1.getName());
+            point1.setNextPoints(point2);
+        }
+        return prePoints;
     }
 }
