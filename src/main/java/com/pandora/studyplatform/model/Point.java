@@ -9,6 +9,7 @@ import org.neo4j.ogm.annotation.Property;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author : Pandora
@@ -32,6 +33,10 @@ public class Point implements Serializable {
 
     private List<Point> nextPoints;
 
+    private List<String> videoList;
+
+    private List<String> fileList;
+
     public Point() {
     }
 
@@ -41,6 +46,22 @@ public class Point implements Serializable {
         this.file = file;
         this.video = video;
         this.type = type;
+    }
+
+    public List<String> getVideoList() {
+        return videoList;
+    }
+
+    public void setVideoList(List<String> videoList) {
+        this.videoList = videoList;
+    }
+
+    public List<String> getFileList() {
+        return fileList;
+    }
+
+    public void setFileList(List<String> fileList) {
+        this.fileList = fileList;
     }
 
     public Long getId() {

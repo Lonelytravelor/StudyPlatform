@@ -120,9 +120,30 @@ public class TestController {
     @RequestMapping("/loadPrePoint")
     @ResponseBody
     public List<Point> loadPrePoint(String point){
+        System.out.println("here");
         List<Point> prePoints = pointRepository.findPrePointById(point);
         for (Point point1 : prePoints) {
             List<Point> point2 = pointRepository.findSubPointById(point1.getName());
+            for (Point point3 : point2 ){
+                String file = point3.getFile();
+                if (file != null){
+                    List<String> files = new ArrayList<>();
+                    String[] split = file.split(";");
+                    for (String s : split){
+                        files.add(s);
+                    }
+                    point3.setFileList(files);
+                }
+                String video = point3.getVideo();
+                if ( video != null ){
+                    List<String> videos = new ArrayList<>();
+                    String[] split = video.split(";");
+                    for (String s : split){
+                        videos.add(s);
+                    }
+                    point3.setVideoList(videos);
+                }
+            }
             point1.setNextPoints(point2);
         }
         return prePoints;

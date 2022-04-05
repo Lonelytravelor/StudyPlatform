@@ -22,7 +22,7 @@ public interface PointRepository extends Neo4jRepository<Point,Long> {
             "return n2")
     List<Point> findSubPointById(String pointName);
 
-    @Query("MATCH (n:Point {name:$pointName})-[m:Next]->(n2:Point)\n" +
+    @Query("MATCH (n:Point {name:$pointName})-[m:Next]-(n2:Point)\n" +
             "where n.name = m.sub and n2.name = m.cur\n" +
             "return n2")
     List<Point> findPrePointById(String pointName);

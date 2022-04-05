@@ -64,4 +64,14 @@ class StudyPlatformApplicationTests {
         System.out.println("=================================================================================");
     }
 
+    @Test
+    public void test2(){
+        List<Point> list = pointRepository.findPrePointById("推理");
+        System.out.println("=================================================================================");
+        for (Point Point : list){
+            System.out.println(Point);
+        }
+        System.out.println("=================================================================================");
+    }
+
 }

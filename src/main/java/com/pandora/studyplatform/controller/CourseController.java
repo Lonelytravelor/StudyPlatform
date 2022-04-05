@@ -217,6 +217,27 @@ public class CourseController {
             point1.setNextPoints(subPoints2);
             for (Point point2 : subPoints2) {
                 List<Point> subPoints3 = pointRepository.findSubPointById(point2.getName());
+                for (Point point3 : subPoints3) {
+                    String file = point3.getFile();
+                    if (file != null){
+                        List<String> files = new ArrayList<>();
+                        String[] split = file.split(";");
+                        for (String s : split){
+                            files.add(s);
+                        }
+                        point3.setFileList(files);
+                    }
+
+                    String video = point3.getVideo();
+                    if ( video != null ){
+                        List<String> videos = new ArrayList<>();
+                        String[] split = video.split(";");
+                        for (String s : split){
+                            videos.add(s);
+                        }
+                        point3.setVideoList(videos);
+                    }
+                }
                 point2.setNextPoints(subPoints3);
             }
 
