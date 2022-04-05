@@ -7,7 +7,6 @@ import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Property;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,31 +15,28 @@ import java.util.List;
  * @description：
  */
 
-@NodeEntity(label = "Point")
-public class Point implements Serializable {
+@NodeEntity(label = "知识点")
+public class PointTest implements Serializable {
     @Id
     @GeneratedValue
     private Long id;
     @Property
     private String name;
     @Property
-    private String file;
+    private String files;
     @Property
-    private String video;
-    @Property
-    private String type;
+    private String videos;
 
-    private List<Point> nextPoints;
+    private List<PointTest> nextPoints;
 
-    public Point() {
+    public PointTest() {
     }
 
-    public Point(Long id, String name, String file, String video, String type) {
+    public PointTest(Long id, String name, String files, String videos) {
         this.id = id;
         this.name = name;
-        this.file = file;
-        this.video = video;
-        this.type = type;
+        this.files = files;
+        this.videos = videos;
     }
 
     public Long getId() {
@@ -59,46 +55,37 @@ public class Point implements Serializable {
         this.name = name;
     }
 
-    public String getFile() {
-        return file;
+    public String getFiles() {
+        return files;
     }
 
-    public void setFile(String file) {
-        this.file = file;
+    public void setFiles(String files) {
+        this.files = files;
     }
 
-    public String getVideo() {
-        return video;
+    public String getVideos() {
+        return videos;
     }
 
-    public void setVideo(String video) {
-        this.video = video;
+    public void setVideos(String videos) {
+        this.videos = videos;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public List<Point> getNextPoints() {
+    public List<PointTest> getNextPoints() {
         return nextPoints;
     }
 
-    public void setNextPoints(List<Point> nextPoints) {
+    public void setNextPoints(List<PointTest> nextPoints) {
         this.nextPoints = nextPoints;
     }
 
     @Override
     public String toString() {
-        return "Point{" +
+        return "PointTest{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", file='" + file + '\'' +
-                ", video='" + video + '\'' +
-                ", type='" + type + '\'' +
+                ", files='" + files + '\'' +
+                ", videos='" + videos + '\'' +
                 ", nextPoints=" + nextPoints +
                 '}';
     }

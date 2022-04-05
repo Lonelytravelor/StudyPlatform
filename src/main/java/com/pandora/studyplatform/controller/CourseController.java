@@ -218,10 +218,6 @@ public class CourseController {
             for (Point point2 : subPoints2) {
                 List<Point> subPoints3 = pointRepository.findSubPointById(point2.getName());
                 point2.setNextPoints(subPoints3);
-                for (Point point3 : subPoints3) {
-                    List<Point> subPoints4 = pointRepository.findSubPointById(point3.getName());
-                    point3.setNextPoints(subPoints4);
-                }
             }
 
         }

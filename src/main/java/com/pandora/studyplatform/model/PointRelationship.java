@@ -12,24 +12,24 @@ import java.util.List;
  * @description：
  */
 
-@RelationshipEntity(type = "先序知识")
+@RelationshipEntity(type = "Next")
 public class PointRelationship implements Serializable {
     @Id
     @GeneratedValue
     private Long id;
 
     @StartNode
-    private Point sub;
+    private Point cur;
 
     @EndNode
-    private Point obj;
+    private Point sub;
 
     public PointRelationship() {
     }
 
-    public PointRelationship(Long id, Point obj, Point sub) {
+    public PointRelationship(Long id, Point cur, Point sub) {
         this.id = id;
-        this.obj = obj;
+        this.cur = cur;
         this.sub = sub;
     }
 
@@ -41,12 +41,12 @@ public class PointRelationship implements Serializable {
         this.id = id;
     }
 
-    public Point getObj() {
-        return obj;
+    public Point getCur() {
+        return cur;
     }
 
-    public void setObj(Point obj) {
-        this.obj = obj;
+    public void setCur(Point cur) {
+        this.cur = cur;
     }
 
     public Point getSub() {
@@ -61,7 +61,7 @@ public class PointRelationship implements Serializable {
     public String toString() {
         return "PointRelationship{" +
                 "id=" + id +
-                ", obj=" + obj +
+                ", cur=" + cur +
                 ", sub=" + sub +
                 '}';
     }

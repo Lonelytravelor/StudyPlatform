@@ -4,6 +4,7 @@ import com.pandora.studyplatform.DAO.PointRelationshipRepository;
 import com.pandora.studyplatform.DAO.PointRepository;
 import com.pandora.studyplatform.model.Point;
 import com.pandora.studyplatform.model.PointRelationship;
+import com.pandora.studyplatform.model.PointTest;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -39,7 +40,7 @@ class StudyPlatformApplicationTests {
 //        pointRelationshipRepository.save(relationship);
 //        Optional<Point> byId = pointRepository.findById(1000L);
 //        System.out.println(byId);
-        List<Point> pointByName = pointRepository.findPrePointById("推理定律");
+        List<Point> pointByName = pointRepository.findSubPointById("等值式");
         System.out.println("====================");
         System.out.println("====================");
         System.out.println("====================");
@@ -50,13 +51,17 @@ class StudyPlatformApplicationTests {
         System.out.println("====================");
         System.out.println("====================");
         System.out.println("====================");
-        pointByName = pointRepository.findSubPointById("推理定律");
-        for (Point p : pointByName) {
-            System.out.println(p);
+
+    }
+
+    @Test
+    public void test1(){
+        Iterable<Point> all = pointRepository.findAll();
+        System.out.println("=================================================================================");
+        for (Point Point : all){
+            System.out.println(Point);
         }
-        System.out.println("====================");
-        System.out.println("====================");
-        System.out.println("====================");
+        System.out.println("=================================================================================");
     }
 
 }
